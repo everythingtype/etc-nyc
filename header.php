@@ -30,8 +30,18 @@
 </head>
 <body>
 
+<div class="topstrip">
+	<div class="search" style="display: none;">Search</div>
+</div>
+
 <div class="layout">
 
-	<h1><span><a href="/"><?php bloginfo('name'); ?></a></span></h1>
+	<div class="header">
+
+		<div class="logo"><h1><a href="/"><span class="e">E</span><span class="t">T</span><span class="c">C</span><span class="everything"> <?php bloginfo('name'); ?></span></a></h1></div>
+
+		<?php get_template_part('parts/navigation'); ?>
 	
-	<?php get_template_part('parts/navigation'); ?>
+	</div>
+	
+	<div class="maincolumn">

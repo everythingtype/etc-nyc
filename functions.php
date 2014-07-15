@@ -37,13 +37,69 @@ function enqueue_scripts_method() {
 
 add_action('wp_enqueue_scripts', 'enqueue_scripts_method');
 
+// Random Typekit font
+function enqueue_type_method() {
+
+	$version = "a";
+
+	$items = array("futura", "nimbus", "adobe", "courier", "bell");
+	$lottery = $items[array_rand($items)];
+
+	if ( $lottery == "futura" ) :
+		// ETC Futura
+		$etctypekitjs = '//use.typekit.net/mca0vgq.js';
+		$typecss = get_stylesheet_directory_uri() . '/css/futura.css';
+	elseif ( $lottery == "nimbus" ) :
+		// ETC Nimbus
+		$etctypekitjs = '//use.typekit.net/mzk2gdi.js';
+		$typecss = get_stylesheet_directory_uri() . '/css/nimbus.css';
+	elseif ( $lottery == "adobe" ) :
+		// ETC Adobe
+		$etctypekitjs = '//use.typekit.net/ynf7ugg.js';
+		$typecss = get_stylesheet_directory_uri() . '/css/adobe.css';
+	elseif ( $lottery == "courier" ) :
+		// ETC Courier
+		$etctypekitjs = '//use.typekit.net/kxa8dle.js';
+		$typecss = get_stylesheet_directory_uri() . '/css/courier.css';
+	else : 
+		// ETC Bell
+		$etctypekitjs = '//use.typekit.net/ule7ccp.js';
+		$typecss = get_stylesheet_directory_uri() . '/css/bell.css';
+	endif;
+
+	wp_register_style('typecss',$typecss, false, $version);
+	wp_enqueue_style( 'typecss');
+
+	wp_register_script('etctypekitjs',$etctypekitjs, false, $version);
+	wp_enqueue_script( 'etctypekitjs');
+
+}
+add_action('wp_enqueue_scripts', 'enqueue_type_method');
 
 
+function theme_typekit_inline() {
+  if ( wp_script_is( 'etctypekitjs', 'done' ) ) echo '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>';
+}
+add_action( 'wp_head', 'theme_typekit_inline' );
 
 
+// Featured Images
 if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'post-thumbnails' );
 }
+
+
+
+//http://speakinginbytes.com/2012/11/responsive-images-in-wordpress/
+function remove_thumbnail_dimensions( $html ) {
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+}
+add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
+add_filter( 'the_content', 'remove_thumbnail_dimensions', 10 );
+add_filter( 'category_description', 'remove_thumbnail_dimensions', 10 );
+
+
 
 function is_page_or_subpage_of($slug) {
 

@@ -1,4 +1,8 @@
-<p class="small">&copy; <?php echo date('Y')?> Everything Type Company</p>
+</div><!-- Maincolumn -->
+
+<div class="footer">
+	<p class="small">&copy; <?php echo date('Y')?> Everything Type Company</p>
+</div>
 
 </div>
 
