@@ -31,7 +31,15 @@
 <body>
 
 <div class="topstrip">
-	<div class="search" style="display: none;">Search</div>
+	<div class="search" style="display: none;">
+		<form method="post" id="searchform" action="">
+			<div class="inputmargin"><input type="search" name="search_value" id="search_input" onfocus="if(this.value == 'Search here...') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Search here...'; }" value="Search here..."></div>
+			<button type="submit" id="submitbutton">
+				<span class="icon-search"></span>
+				<span class="buttonlabel">Go</span>
+			</button>
+		</form>
+	</div>
 </div>
 
 <div class="layout">

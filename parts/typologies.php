@@ -15,10 +15,12 @@ foreach ($categories as $category) :
 
 	echo '<h2><a href="' . $termlink . '">' . $category->name . '</a></h2>';
 
+	echo '<div class="grid">';
+
 	$postargs = array(
 		'posts_per_page'   => -1,
 		'orderby'          => 'menu_order',
-		'order'            => 'DESC',
+		'order'            => 'ASC',
 		'post_type'        => 'etc_projects',
 		'tax_query' => array(
 				array(
@@ -36,6 +38,8 @@ foreach ($categories as $category) :
 		setup_postdata($post);
 		get_template_part('parts/project-thumbnail');
 	endforeach;
+
+	echo '</div>';
 
 endforeach;
 

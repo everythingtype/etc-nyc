@@ -7,7 +7,7 @@ require_once( 'functions/projects.php' );
 
 function enqueue_scripts_method() {
 
-	$version = "o";
+	$version = "p";
 
 	// Remove Unnecessary Code
 	// http://www.themelab.com/2010/07/11/remove-code-wordpress-header/
@@ -33,6 +33,13 @@ function enqueue_scripts_method() {
 	wp_register_style('themecss',$themecss, false, $version);
 	wp_enqueue_style( 'themecss');
 
+	if ( is_singular( 'etc_projects' ) ) :
+
+		$projectjs = get_template_directory_uri() . '/js/project.js';
+		wp_register_script('projectjs',$projectjs, false, $version);
+		wp_enqueue_script( 'projectjs',array('jquery','flexsliderjs'));
+
+	endif;
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_scripts_method');
@@ -42,7 +49,7 @@ function enqueue_type_method() {
 
 	$version = "a";
 
-	$items = array("futura", "nimbus", "adobe", "courier", "bell");
+	$items = array("futura", "nimbus", "adobe", "standard", "letter");
 	$lottery = $items[array_rand($items)];
 
 	if ( $lottery == "futura" ) :
@@ -57,14 +64,18 @@ function enqueue_type_method() {
 		// ETC Adobe
 		$etctypekitjs = '//use.typekit.net/ynf7ugg.js';
 		$typecss = get_stylesheet_directory_uri() . '/css/adobe.css';
-	elseif ( $lottery == "courier" ) :
-		// ETC Courier
+	elseif ( $lottery == "cooper" ) :
+		// ETC Cooper
 		$etctypekitjs = '//use.typekit.net/kxa8dle.js';
-		$typecss = get_stylesheet_directory_uri() . '/css/courier.css';
+		$typecss = get_stylesheet_directory_uri() . '/css/cooper.css';
+	elseif ( $lottery == "standard" ) :
+		// ETC Standard
+		$etctypekitjs = '//use.typekit.net/swt5hli.js';
+		$typecss = get_stylesheet_directory_uri() . '/css/standard.css';
 	else : 
-		// ETC Bell
+		// ETC Letter
 		$etctypekitjs = '//use.typekit.net/ule7ccp.js';
-		$typecss = get_stylesheet_directory_uri() . '/css/bell.css';
+		$typecss = get_stylesheet_directory_uri() . '/css/letter.css';
 	endif;
 
 	wp_register_style('typecss',$typecss, false, $version);
@@ -139,22 +150,22 @@ function is_etc_section( $label ) {
 	$isWork = false;
 	$isNews = false;
 	$isAbout = false;
-	$isFeatured = false;
 	$isEverything = false;
 	$isCategories = false;
 	$isClients = false;
 	$isFonts = false;
 
-	if ( is_page('featured-work') ) $isFeatured = true;
-	if ( is_page('everything') ) $isEverything = true;
-	if ( is_page('categories') ) $isCategories = true;
-	if ( is_page('clients') ) $isClients = true;
-	if ( is_page('fonts') ) $isFonts = true;
-
-	if ( $isFeatured == true || $isEverything == true || $isCategories == true || $isClients == true || $isFonts == true ) $isWork = true;
-
 	if ( is_category('news') || in_category('news') ) $isNews = true;
 	if ( is_page('profile') || is_page('people') || is_page('credits') ) $isAbout = true;
+
+
+	if ( is_page('everything') || is_tax('etc_project_dates') ) $isEverything = true;
+	if ( is_page('categories') || is_tax('etc_project_typologies') ) $isCategories = true;
+	if ( is_page('clients') || is_tax('etc_project_clients') ) $isClients = true;
+	if ( is_page('fonts') || is_tax('etc_project_fonts') ) $isFonts = true;
+
+	if ( $isEverything == true || $isCategories == true || $isClients == true || $isFonts == true ) $isWork = true;
+
 
 	// echo "isWork: " . $isWork;
 	// echo "isNews: " . $isNews;
@@ -185,5 +196,17 @@ function is_etc_section( $label ) {
 
 }
 
+
+function etc_singularize($term) {
+	
+	if ( $term == 'Publications' ) :
+		return 'Publication';
+	elseif ( $term == 'Case Studies' ) :
+		return 'Case Study';
+	else :
+		return $term;
+	endif;
+	
+}
 
 ?>

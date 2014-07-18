@@ -20,7 +20,9 @@ a {color: #808080; text-decoration: none;
 a:hover { color: #000; }
 .active a { color: #000; }
 
-.logo { float: left; width: 100px; padding: 2px 10px 0 0; }
+.header { position: fixed; top: 0; left: 0; padding-top: 15px; }
+
+.logo { float: left; width: 95px; padding: 2px 5px 0 0; }
 h1 {  font-size: 82px; line-height: 82px;  font-weight: normal; margin: 0; text-align: center; }
 h1 .e { display: block; }
 h1 .t { display: block; }
@@ -28,24 +30,63 @@ h1 .c { display: block; }
 h1 .everything { display: none; }
 h1 a { color: #000; }
 
-h2 { font-size: 20px; line-height: 1.25; font-weight: normal; margin: 0 0 1.25em 0;}
+h2 { font-size: 40px; line-height: 1.25; font-weight: normal; margin: 0; text-align: center; }
 h2 a { color: #000; }
 
-img { max-width: 100%; }
+h4 { font-size: 14px; line-height: 1.35; margin: 0; font-weight: normal; }
+h4 a { color: #000; }
+
+img { max-width: 100%;  max-height: 100%;  }
+
+hr { border: 0; height: 1px; background: #000; }
 
 .topstrip { background: #000; padding-bottom: 4px; }
 
 .layout {padding-top: 15px; }
 
 
-.navigation { float: left; width: 150px; padding: 0 10px 0 0;}
+.navigation { float: left; width: 130px; padding: 0 10px 0 0;}
 .navigation ul { list-style: none; margin: .5em 0 1.25em 0 ; padding: 0; }
 .navigation li { margin: 0; padding: 0;  }
 
 /* Main Column */
 
-.maincolumn { margin-left: 270px; padding-top: .5em; }
+.maincolumn { margin-left: 240px; }
 
+.biglist { padding-top: 4px; }
+.biglist ul { list-style: none; margin: 0; padding: 0; font-size: 80px; line-height: .95; letter-spacing: -.03em; }
+.biglist li { margin: 0; padding: 0;  }
+
+.page { max-width: 670px; padding-top: .5em;  }
+.page h2 {margin-bottom: 0; }
+.page p.date { margin-top: 0; color: #808080; }
+
+.project { padding-top: .5em;  }
+
+/* Masonry */
+
+.masonry {  padding-top: .5em;  overflow: hidden; }
+.masonry .grid { overflow: hidden; clear: both; }
+
+.grid .griditem { float: left; position: relative; }
+.grid .griditempadding { margin: 0 30px 42px 0; position: relative; }
+.grid .thumbnail { line-height: 0; padding: 0 0 43px 0; text-align: center; }
+.thumbnailpadding {}
+.grid .thumbnailalign { display: table-cell; vertical-align: middle; }
+
+.grid .caption {border-top: 1px solid #000; background: #fff; padding: 7px 0 0 0; position: absolute; bottom: 0; left: 0; width: 100%; }
+
+.grid .griditem.regular .thumbnailpadding, .grid .griditem.regular .thumbnailalign { width: 270px; height: 240px;  }
+.grid .griditem.large .thumbnailpadding, .grid .griditem.large .thumbnailalign { width: 570px; height: 565px; }	
+
+.grid .category { color: #808080; }
+.grid .client {}
+.grid .meta {color: #808080; display: none; overflow: hidden; }
+
+/* Slideshow */
+.slides {text-align: center; }
+.slide { overflow: hidden; }
+.slideinner { margin: 50px; display: block; }
 
 /* Footer */
 

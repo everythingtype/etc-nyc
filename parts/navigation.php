@@ -2,7 +2,7 @@
 
 	<div class="topnav">
 		<ul>
-			<li <?php if ( is_etc_section('work') ) echo 'class="active"'; ?>><a href="/featured-work/">Work</a></li>
+			<li <?php if ( is_etc_section('work') ) echo 'class="active"'; ?>><a href="/categories/">Work</a></li>
 			<li <?php if ( is_etc_section('news') ) echo 'class="active"'; ?>><a href="/category/news">News</a></li>
 			<li <?php if ( is_etc_section('about') ) echo 'class="active"'; ?>><a href="/profile">About</a></li>
 			<li <?php if ( is_page('contact') ) echo 'class="active"'; ?>><a href="/contact">Contact</a></li>
@@ -14,9 +14,8 @@
 		<div class="subnav">
 			<ul>
 				<?php if ( is_etc_section('work') ) : ?>
-					<li <?php if ( is_etc_section('featured') ) echo 'class="active"'; ?>><a href="/featured-work/">Featured</a></li>
-					<li <?php if ( is_etc_section('everything') ) echo 'class="active"'; ?>><a href="/everything">Everything</a></li>
 					<li <?php if ( is_etc_section('categories') ) echo 'class="active"'; ?>><a href="/categories">Categories</a></li>
+					<li <?php if ( is_etc_section('everything') ) echo 'class="active"'; ?>><a href="/everything">Everything</a></li>
 					<li <?php if ( is_etc_section('clients') ) echo 'class="active"'; ?>><a href="/clients">Clients</a></li>
 					<li <?php if ( is_etc_section('fonts') ) echo 'class="active"'; ?>><a href="/fonts">Fonts</a></li>
 				<?php endif; ?>

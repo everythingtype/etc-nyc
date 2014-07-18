@@ -1,5 +1,14 @@
 (function($) {
 
+	function setupGrid() {
+		$('.grid').packery({
+			itemSelector: '.griditem',
+			transitionDuration: "0"
+		});	
+
+	}
+
+
 	function setupLayout() {
 
 		$('body').addClass('js');
@@ -20,11 +29,24 @@
 
 	$(document).ready( function() {
 		setupLayout();
+		setupGrid();
+
+		$('.griditem').on("hover", function () {
+			$(this).find('.meta').slideToggle(100);
+		});
+
+
 
 	});
 
+
 	$(window).load( function() {
 		$('#loading').hide();
+		setupGrid();
+	});
+
+	$(window).resize( function() {
+		setupGrid();
 	});
 
 })(jQuery);
