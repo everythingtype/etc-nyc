@@ -63,6 +63,9 @@ hr { border: 0; height: 1px; background: #000; }
 
 .project { padding-top: .5em;  }
 
+.relatedprojects { border-top: 1px solid #000; }
+.relatedprojects h3 { font-size: 1em; margin: .25em 0 1em 0; font-weight: normal; }
+
 /* Masonry */
 
 .masonry {  padding-top: .5em;  overflow: hidden; }
@@ -87,6 +90,7 @@ hr { border: 0; height: 1px; background: #000; }
 .slides {text-align: center; }
 .slide { overflow: hidden; }
 .slideinner { margin: 50px; display: block; }
+
 
 /* Footer */
 

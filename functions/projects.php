@@ -22,7 +22,7 @@ function create_etc_project() {
 				'parent' => 'Parent Project'
 			),
 			'public' => true,
-			'hierarchical' => true,
+			'hierarchical' => false,
 			'supports' => array( 'title','editor','author','thumbnail','custom-fields','revisions', 'page-attributes'  ),
 			'rewrite' => array('slug' => 'project'),
 			'has_archive' => true

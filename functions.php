@@ -33,7 +33,7 @@ function enqueue_scripts_method() {
 	wp_register_style('themecss',$themecss, false, $version);
 	wp_enqueue_style( 'themecss');
 
-	if ( is_singular( 'etc_projects' ) ) :
+	if ( is_singular( 'etc_projects' ) || is_front_page() ) :
 
 		$projectjs = get_template_directory_uri() . '/js/project.js';
 		wp_register_script('projectjs',$projectjs, false, $version);

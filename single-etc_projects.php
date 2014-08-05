@@ -30,6 +30,23 @@
 				<?php endif; ?>
 
 				<?php the_content(); ?>
+
+				<?php 
+				
+				$relatedposts = get_field('related_projects'); 
+				if( $relatedposts ): ?>
+					<div class="relatedprojects">
+						<h3>Related Projects</h3>
+						
+						<?php foreach( $relatedposts as $post): setup_postdata($post); ?>
+							<div class="relatedproject">
+								<?php get_template_part('parts/project-thumbnail'); ?>
+							</div>
+						    <?php endforeach; ?>
+					</div>
+				<?php endif; ?>
+
+
 			<?php endwhile; ?>
 			</div>
 
