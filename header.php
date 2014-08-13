@@ -6,13 +6,12 @@
 	<title><?php 
 		wp_title( '&mdash;', true, 'right' );
 		bloginfo( 'name' ); 
-		$site_description = get_bloginfo( 'description', 'display' );
 
-		if ( $site_description && ( is_home() || is_front_page() ) )
-			echo " $site_description";
 		if ( $paged >= 2 || $page >= 2 )
 			echo ' &mdash; ' . sprintf( __( 'Page %s' ), max( $paged, $page ) );
 		?></title>
+
+		<?php get_template_part('parts/ascii'); ?>
 
 		<meta name="author" content="Designed by Everything Type Company, http://www.etc-nyc.com/ | Developed by Marty Spellerberg, http://www.martyspellerberg.com/" />
 	

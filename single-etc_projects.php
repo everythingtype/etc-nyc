@@ -1,10 +1,13 @@
 <?php get_header(); ?>
 		<?php if (have_posts()) : ?>
 			<div class="project">
-			
-			<h2><?php the_title(); ?></h2>
-			
+						
 			<?php while (have_posts()) : the_post(); ?>
+
+				<h2><?php the_title(); ?></h2>
+
+				<p class="pagenav"><?php previous_post_link('%link','&larr;'); ?><?php next_post_link('%link','&rarr;'); ?></p>
+
 
 				<?php if( have_rows('project_images') ): 
 					$i = 0;
@@ -22,7 +25,7 @@
 									<div class="slide" id="slide<?php echo $i; ?>">
 										<div class="slideinner">
 											<?php $i++; ?>
-											<a href="#slide<?php echo $i; ?>"><img src="<?php echo $image['url'];  ?>" alt="<?php echo $alt; ?>" /></a>
+											<a href="#slide<?php echo $i; ?>" class="nextslide"><img src="<?php echo $image['url'];  ?>" alt="<?php echo $alt; ?>" /></a>
 										</div>
 									</div>
 						<?php endwhile; ?> 

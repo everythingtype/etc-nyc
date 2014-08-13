@@ -49,6 +49,7 @@ hr { border: 0; height: 1px; background: #000; }
 .navigation ul { list-style: none; margin: .5em 0 1.25em 0 ; padding: 0; }
 .navigation li { margin: 0; padding: 0;  }
 
+
 /* Main Column */
 
 .maincolumn { margin-left: 240px; }
@@ -66,6 +67,8 @@ hr { border: 0; height: 1px; background: #000; }
 .relatedprojects { border-top: 1px solid #000; }
 .relatedprojects h3 { font-size: 1em; margin: .25em 0 1em 0; font-weight: normal; }
 
+.pagenav { font-family: "Icons", sans-serif; text-align: center; font-size: 30px; margin: 11px 0 0 0; }
+.pagenav a { padding: 0 11px; }
 /* Masonry */
 
 .masonry {  padding-top: .5em;  overflow: hidden; }
@@ -91,7 +94,13 @@ hr { border: 0; height: 1px; background: #000; }
 .slide { overflow: hidden; }
 .slideinner { margin: 50px; display: block; }
 
-
+.nextslide {
+	cursor: url('images/down-1x.png'), auto;
+	cursor: -webkit-image-set(
+	  url('images/down-1x.png') 1x,
+	  url('images/down-2x.png') 2x
+	), auto;
+}
 /* Footer */
 
 .footer {display: none; }
