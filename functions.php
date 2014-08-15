@@ -7,7 +7,7 @@ require_once( 'functions/projects.php' );
 
 function enqueue_scripts_method() {
 
-	$version = "p";
+	$version = "r";
 
 	// Remove Unnecessary Code
 	// http://www.themelab.com/2010/07/11/remove-code-wordpress-header/
@@ -161,7 +161,7 @@ function is_etc_section( $label ) {
 	$isFonts = false;
 
 	if ( is_category('news') || in_category('news') ) $isNews = true;
-	if ( is_page('profile') || is_page('people') || is_page('credits') ) $isAbout = true;
+	if ( is_page('profile') || is_page('people') ) $isAbout = true;
 
 
 	if ( is_page('everything') || is_tax('etc_project_dates') ) $isEverything = true;

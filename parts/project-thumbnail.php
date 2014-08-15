@@ -6,7 +6,7 @@
 
 <div class="griditem <?php echo get_field('project_prominence'); ?>"><div class="griditempadding">
 	<div class="thumbnail"><div class="thumbnailpadding"><div class="thumbnailalign"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a></div></div></div>
-	<div class="caption"><h4><a href="<?php the_permalink(); ?>">
+	<div class="gridcaption"><h4><a href="<?php the_permalink(); ?>">
 		<span class="category"><?php echo etc_singularize($typologies[0]->name); ?></span> <?php echo etc_singularize($clients[0]->name); ?>
 		<div class="meta">
 			<?php the_title(); ?><br />

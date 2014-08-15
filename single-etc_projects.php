@@ -6,49 +6,90 @@
 
 				<h2><?php the_title(); ?></h2>
 
-				<p class="pagenav"><?php previous_post_link('%link','&larr;'); ?><?php next_post_link('%link','&rarr;'); ?></p>
+				<?php
+
+				$args = array(
+					'post_type' => array( 'etc_projects' ),
+					'orderby' => 'menu_order',
+					'order' => 'DESC',
+					'posts_per_page' => -1
+				);
+
+				$projects = get_posts( $args );
+
+				$pages = array();
+
+				foreach ($projects as $page) $pages[] += $page->ID;
 
 
-				<?php if( have_rows('project_images') ): 
-					$i = 0;
-					
-					?>
-						<div class="slides">
-						<?php while ( have_rows('project_images') ) : the_row(); ?>
-									<?php $image = get_sub_field('image');
-									if ( $image['alt'] ) :
-										$alt = $image['alt']; 
-									else :
-										$alt = $image['title']; 
-									endif; ?>
+				$current = array_search(get_the_ID(), $pages);
 
-									<div class="slide" id="slide<?php echo $i; ?>">
-										<div class="slideinner">
-											<?php $i++; ?>
-											<a href="#slide<?php echo $i; ?>" class="nextslide"><img src="<?php echo $image['url'];  ?>" alt="<?php echo $alt; ?>" /></a>
-										</div>
-									</div>
-						<?php endwhile; ?> 
-						</div>
-				<?php endif; ?>
+				$prevID = $pages[$current-1];
+				$nextID = $pages[$current+1];
 
-				<?php the_content(); ?>
+				if ( empty($prevID) ) : 
+					$pagecount = count($pages) - 1;
+					$prevID = $pages[$pagecount];
+				endif;
 
-				<?php 
-				
-				$relatedposts = get_field('related_projects'); 
-				if( $relatedposts ): ?>
-					<div class="relatedprojects">
-						<h3>Related Projects</h3>
-						
-						<?php foreach( $relatedposts as $post): setup_postdata($post); ?>
-							<div class="relatedproject">
-								<?php get_template_part('parts/project-thumbnail'); ?>
+				if ( empty($nextID) ) $nextID = $pages[0];
+
+				$prevlink = get_permalink($prevID);
+				$nextlink = get_permalink($nextID);
+
+				wp_reset_query();
+
+				?>
+
+				<p class="pagenav"><a href="<?php echo $prevlink; ?>">&larr;</a><a href="<?php echo $nextlink; ?>">&rarr;</a></p>
+
+				<?php $i = 0; ?>
+
+				<?php if( have_rows('project_images') ):  ?>
+					<div class="slides">
+					<?php while ( have_rows('project_images') ) : the_row(); ?>
+
+						<?php $image = get_sub_field('image');
+						if ( $image['alt'] ) :
+							$alt = $image['alt']; 
+						else :
+							$alt = $image['title']; 
+						endif; ?>
+
+						<div class="slide" id="slide<?php echo $i; ?>">
+							<div class="slideinner">
+								<?php $i++; ?>
+								<a href="#slide<?php echo $i; ?>" class="nextslide"><img src="<?php echo $image['url'];  ?>" alt="<?php echo $alt; ?>" /></a>
 							</div>
-						    <?php endforeach; ?>
+						</div>
+
+					<?php endwhile; ?> 
 					</div>
 				<?php endif; ?>
 
+				<div id="slide<?php echo $i; ?>">
+
+					<?php if ( get_the_content() != '' ) : ?>
+						<div class="projectcontent">
+							<?php the_content(); ?>
+						</div>
+					<?php endif; ?>
+
+					<?php $relatedposts = get_field('related_projects'); ?>
+					<?php if( $relatedposts ): ?>
+						<div class="relatedprojects">
+							<h3>Related Projects</h3>
+						
+							<?php foreach( $relatedposts as $post): setup_postdata($post); ?>
+								<div class="relatedproject">
+									<?php get_template_part('parts/project-thumbnail'); ?>
+								</div>
+							    <?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+
+
+				</div>
 
 			<?php endwhile; ?>
 			</div>

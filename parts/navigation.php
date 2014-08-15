@@ -6,7 +6,7 @@
 			<li <?php if ( is_etc_section('news') ) echo 'class="active"'; ?>><a href="/category/news">News</a></li>
 			<li <?php if ( is_etc_section('about') ) echo 'class="active"'; ?>><a href="/profile">About</a></li>
 			<li <?php if ( is_page('contact') ) echo 'class="active"'; ?>><a href="/contact">Contact</a></li>
-			<li id="searchtoggle"><a href="">Search</a></li>
+			<li class="searchtoggle"><a href="">Search</a></li>
 		</ul>
 	</div>
 
@@ -23,7 +23,6 @@
 				<?php if ( is_etc_section('about') ) : ?>
 					<li <?php if ( is_page('profile') ) echo 'class="active"'; ?>><a href="/profile">Profile</a></li>
 					<li <?php if ( is_page('people') ) echo 'class="active"'; ?>><a href="/people">People</a></li>
-					<li <?php if ( is_page('credits') ) echo 'class="active"'; ?>><a href="/credits">Credits</a></li>
 				<?php endif; ?>
 			</ul>
 		</div>

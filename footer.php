@@ -6,6 +6,8 @@
 
 </div>
 
+<p class="toplink"><a href="#top" title="Scroll to top">&uarr;</a></p>
+
 <div id="loading"></div>
 
 <?php wp_footer(); ?>

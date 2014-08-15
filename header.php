@@ -29,26 +29,27 @@
 </head>
 <body>
 
-<div class="topstrip">
-	<div class="search" style="display: none;">
-		<form method="post" id="searchform" action="">
-			<div class="inputmargin"><input type="search" name="search_value" id="search_input" onfocus="if(this.value == 'Search here...') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Search here...'; }" value="Search here..."></div>
-			<button type="submit" id="submitbutton">
-				<span class="icon-search"></span>
-				<span class="buttonlabel">Go</span>
-			</button>
+<div class="topbar">
+
+	<div class="searchbox" style="display: none;">
+		<form method="get" id="searchform" action="/">
+			<div class="inputmargin"><input type="search" name="s" id="s" onfocus="if(this.value == 'Search here...') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Search here...'; }" value="Search here..."></div>
+			<span class="closesearch">Close</span>
 		</form>
 	</div>
+
+	<div class="headeranchor">
+		<div class="header">
+
+			<div class="logo"><h1><a href="/"><span class="e">E</span><span class="t">T</span><span class="c">C</span><span class="everything"> <?php bloginfo('name'); ?></span></a></h1></div>
+
+			<?php get_template_part('parts/navigation'); ?>
+
+		</div>
+	</div>
+
 </div>
 
 <div class="layout">
-
-	<div class="header">
-
-		<div class="logo"><h1><a href="/"><span class="e">E</span><span class="t">T</span><span class="c">C</span><span class="everything"> <?php bloginfo('name'); ?></span></a></h1></div>
-
-		<?php get_template_part('parts/navigation'); ?>
-	
-	</div>
 	
 	<div class="maincolumn">
