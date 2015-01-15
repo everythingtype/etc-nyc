@@ -1,1 +1,5 @@
-body, #search_input { font-family: "nimbus-sans",sans-serif; }
+body, #s, input[type=submit] { font-family: "nimbus-sans",sans-serif !important; }
+
+.logo .e { padding-left: 4px; }
+.logo .t { padding-left: 7px; }
+.logo .c { padding-left: 0px; }

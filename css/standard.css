@@ -1,1 +1,5 @@
-body, #search_input {  font-family: "old-standard",serif; }
+body, #s, input[type=submit] {  font-family: "old-standard",serif !important; }
+
+.logo .e { padding-left: 1px; }
+.logo .t { padding-left: 0px; }
+.logo .c { padding-left: 2px; }

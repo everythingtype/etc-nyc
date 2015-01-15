@@ -1,8 +1,14 @@
 <?php 
-	/* Template Name: Home */ 
+
+/* Template Name: Home */ 
+
+get_header(); 
+
 ?>
 
-<?php get_header(); ?>
+<!-- page-home.php -->
+
+<div class="home"><div class-"column">
 
 <?php if (have_posts()) : ?>
 	<?php while (have_posts()) : the_post(); ?>
@@ -41,11 +47,15 @@
 			</div>
 		<?php endif; ?>
 
-		<?php the_content(); ?>
+		<div class="homecontent" id="slide<?php echo $i; ?>">
+			<?php the_content(); ?>
+		</div>
 
 	<?php endwhile; ?>
 
 <?php endif; ?>
+
+</div></div>
 
 <?php get_footer(); ?>
 

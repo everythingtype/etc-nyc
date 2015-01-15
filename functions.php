@@ -3,7 +3,7 @@
 // Includes
 
 require_once( 'functions/projects.php' );
-
+require_once( 'functions/columns.php' );
 
 function enqueue_scripts_method() {
 
@@ -54,7 +54,7 @@ function enqueue_type_method() {
 
 	$version = "a";
 
-	$items = array("futura", "nimbus", "adobe", "standard", "letter");
+	$items = array("futura", "nimbus", "adobe", "standard");
 	$lottery = $items[array_rand($items)];
 
 	if ( $lottery == "futura" ) :
@@ -69,18 +69,10 @@ function enqueue_type_method() {
 		// ETC Adobe
 		$etctypekitjs = '//use.typekit.net/ynf7ugg.js';
 		$typecss = get_stylesheet_directory_uri() . '/css/adobe.css';
-	elseif ( $lottery == "cooper" ) :
-		// ETC Cooper
-		$etctypekitjs = '//use.typekit.net/kxa8dle.js';
-		$typecss = get_stylesheet_directory_uri() . '/css/cooper.css';
-	elseif ( $lottery == "standard" ) :
+	else :
 		// ETC Standard
 		$etctypekitjs = '//use.typekit.net/swt5hli.js';
 		$typecss = get_stylesheet_directory_uri() . '/css/standard.css';
-	else : 
-		// ETC Letter
-		$etctypekitjs = '//use.typekit.net/ule7ccp.js';
-		$typecss = get_stylesheet_directory_uri() . '/css/letter.css';
 	endif;
 
 	wp_register_style('typecss',$typecss, false, $version);
@@ -97,6 +89,41 @@ function theme_typekit_inline() {
   if ( wp_script_is( 'etctypekitjs', 'done' ) ) echo '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>';
 }
 add_action( 'wp_head', 'theme_typekit_inline' );
+
+
+
+// Override Gravity Forms styles
+function etc_gravityforms_enqueue(){
+
+	wp_dequeue_style( 'gforms_formsmain_css' );
+	wp_dequeue_style( 'gforms_ready_class_css' );
+
+	$csm_readyclass = get_template_directory_uri() . '/css/gforms-readyclass.css';
+	wp_register_style('csm_readyclass',$csm_readyclass, false, $version);
+	wp_enqueue_style( 'csm_readyclass');
+	
+	$csm_formsmain = get_template_directory_uri() . '/css/gforms-formsmain.css';
+	wp_register_style('csm_formsmain',$csm_formsmain, false, $version);
+	wp_enqueue_style( 'csm_formsmain');	
+
+	$gformsjs = get_template_directory_uri() . '/js/gforms.js';
+	wp_register_script('gformsjs',$gformsjs, false, $version);
+	wp_enqueue_script( 'gformsjs',array('jquery'));
+
+}
+add_action("gform_enqueue_scripts_1", "etc_gravityforms_enqueue", 10, 2);
+
+
+// Override Autocomplete styles
+function etc_autocomplete_enqueue(){
+	
+	wp_dequeue_style( 'SearchAutocomplete-theme' );
+
+}
+add_action('wp_print_styles', 'etc_autocomplete_enqueue');
+
+
+
 
 
 // Featured Images
@@ -156,7 +183,7 @@ function is_etc_section( $label ) {
 	$isNews = false;
 	$isAbout = false;
 	$isEverything = false;
-	$isCategories = false;
+	$isTypologies = false;
 	$isClients = false;
 	$isFonts = false;
 
@@ -165,11 +192,11 @@ function is_etc_section( $label ) {
 
 
 	if ( is_page('everything') || is_tax('etc_project_dates') ) $isEverything = true;
-	if ( is_page('categories') || is_tax('etc_project_typologies') ) $isCategories = true;
+	if ( is_tax('etc_project_typologies') ) $isTypologies = true;
 	if ( is_page('clients') || is_tax('etc_project_clients') ) $isClients = true;
 	if ( is_page('fonts') || is_tax('etc_project_fonts') ) $isFonts = true;
 
-	if ( $isEverything == true || $isCategories == true || $isClients == true || $isFonts == true ) $isWork = true;
+	if ( $isEverything == true || $isClients == true || $isFonts == true || $isTypologies == true ) $isWork = true;
 
 
 	// echo "isWork: " . $isWork;
@@ -190,8 +217,6 @@ function is_etc_section( $label ) {
 	elseif ( $label == 'featured' && $isFeatured == true ) :
 		return true;
 	elseif ( $label == 'everything' && $isEverything == true ) :
-		return true;
-	elseif ( $label == 'categories' && $isCategories == true ) :
 		return true;
 	elseif ( $label == 'clients' && $isClients == true ) :
 		return true;

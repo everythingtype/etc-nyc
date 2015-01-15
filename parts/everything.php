@@ -1,3 +1,5 @@
+<div class="grid">
+
 <?php 
 
 $taxonomy = "etc_project_dates";
@@ -13,8 +15,6 @@ foreach ($categories as $category) :
 
 	$termlink = get_term_link( $category->slug, $taxonomy ); 
 
-	echo '<h2><a href="' . $termlink . '">' . $category->name . '</a></h2>';
-	echo '<div class="grid">';
 	$postargs = array(
 		'posts_per_page'   => -1,
 		'orderby'          => 'menu_order',
@@ -37,8 +37,8 @@ foreach ($categories as $category) :
 		get_template_part('parts/project-thumbnail');
 	endforeach;
 
-	echo '</div>';
-
 endforeach;
 
 wp_reset_query(); ?>
+
+</div>

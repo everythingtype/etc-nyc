@@ -11,7 +11,13 @@ Developed by Marty Spellerberg, http://www.martyspellerberg.com/
 
 *:focus { outline: none; }
 
-body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-size: 20px; line-height: 1.25; letter-spacing: .02em; margin: 0; padding: 0; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-size: 20px; line-height: 1.25; letter-spacing: .02em; margin: 0; padding: 0; background: #fff; }
+body.black { background: #000; color: #fff; }
+
+p::selection { background: #000; color: #fff; }
+p::-moz-selection { background: #000; color: #fff; }
+a::selection { background: #000; color: #fff; }
+a::-moz-selection { background: #000; color: #fff; }
 
 a {color: #808080; text-decoration: none;
 	-webkit-transition: color 0.2s ease;
@@ -22,25 +28,46 @@ a {color: #808080; text-decoration: none;
 a:hover { color: #000; }
 .active a { color: #000; }
 
-.topbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; }
+.black a:hover { color: #fff; }
+.black .active a { color: #fff; }
+
+.topbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 100;  border-top: 4px solid #000; }
 
 .searchbox { background: #000; color: #fff; }
-.searchbox form { padding: 20px 30px 20px 240px; overflow: hidden; }
-.searchbox #s { background: #000; color: #fff; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-size: 20px; padding: 5px 0; margin: 0; width: 571px; border: none; border-top: 1px solid #fff; }
-.inputmargin { float: left; }
-.closesearch {cursor: pointer; display: block; float: right; padding-top: 7px; }
+.searchbox form { overflow: hidden; }
+.searchbox #s {  display: block; background: #000; color: #fff; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-size: 40px; padding: 5px 20px 0 14px; margin: auto; width: 100%; border: none; }
+
+.inputmargin { margin: auto; padding: 16px 80px 20px 80px; max-width: 750px;}
+.searchborder {  border-top: 1px solid #fff; margin: 0 20px; }
+.closesearch {cursor: pointer; display: block; float: right; padding: 40px 30px 0 0; }
+
+.ui-helper-hidden-accessible { display: none; }
+ul.ui-autocomplete { position: absolute; list-style: none; margin: 0; padding: 10px 20px 14px 20px; background: #000; z-index: 100; font-size: 40px; }
+ul.ui-autocomplete li {  margin: 0; padding: 0; }
+ul.ui-autocomplete li a { color: #8f8f8a; }
+ul.ui-autocomplete li a:hover { color: #fff; cursor: pointer; }
+
+.black .searchbox { background: #fff; color: #000; }
+.black .searchbox #s { background: #fff; color: #000; }
+.black .searchborder {  border-top: 1px solid #000; }
+.black ul.ui-autocomplete { background: #fff; }
+.black ul.ui-autocomplete li a:hover { color: #000; }
 
 .headeranchor {position: relative; }
 .header { position: absolute; top: 0; left: 0; padding-top: 15px; }
 
 .logo { float: left; width: 95px; padding: 6px 5px 0 0; }
 
-h1 {  font-size: 82px; line-height: 82px;  font-weight: normal; margin: 0; text-align: center; }
+h1 {  font-size: 82px; line-height: 82px;  font-weight: normal; margin: 0 0 0 20px; text-align: left; position: relative; z-index: 1; }
 h1 .e { display: block; }
 h1 .t { display: block; }
 h1 .c { display: block; }
-h1 .everything { display: none; }
+h1 span span { display: none; }
+
 h1 a { color: #000; }
+h1 a:hover span span { display: inline; }
+
+.black h1 a { color: #fff; }
 
 h2 { line-height: 1.25; font-weight: normal; margin: 0; }
 h2 a { color: #000; }
@@ -48,52 +75,71 @@ h2 a { color: #000; }
 h4 { font-size: 14px; line-height: 1.35; margin: 0; font-weight: normal; }
 h4 a { color: #000; }
 
+
+hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
+
+.layout {padding-top: 15px; }
 .layout img { max-width: 100%;  max-height: 100%;  }
-
-hr { border: 0; height: 1px; background: #000; }
-
-.layout {padding-top: 15px; border-top: 4px solid #000; }
 
 
 .navigation { float: left; width: 130px; padding: 4px 10px 0 0;}
 .navigation ul { list-style: none; margin: .5em 0 1.25em 0 ; padding: 0; }
 .navigation li { margin: 0; padding: 0;  }
 
+.subnav { font-size: 14px; line-height: 1.35; } 
 
 /* Main Column */
 
-.maincolumn { margin-left: 240px; }
+.searchlist { padding-top: .5em; margin: auto; max-width: 710px; }
+.searchlist h2 { font-size: 40px; margin-bottom: 2em; }
+.searchlist ul { list-style: none; margin: 0; padding: 0; font-size: 40px; line-height: 1.3; letter-spacing: .02em; }
+.searchlist li { margin: 0; padding: 0;  }
 
-.biglist { padding-top: 4px; }
+.biglist { padding-top: 4px; margin-left: 240px; }
 .biglist ul { list-style: none; margin: 0; padding: 0; font-size: 80px; line-height: .95; letter-spacing: -.03em; }
 .biglist li { margin: 0; padding: 0;  }
 
-.page { max-width: 670px; padding: .5em 0 100px 0;  }
-.page h2 { font-size: 20px; text-align: left; }
-.page p.date { margin-top: 0; color: #808080; }
+.home { padding-top: .5em; max-width: 970px; margin: auto; }
+.home .column { float: left; }
+.homecontent { font-size: 40px; line-height: 1.2; padding-bottom: 80px; }
 
-.project { padding-top: .5em; max-width: 870px;  }
-.project h2 { font-size: 40px; text-align: center; }
+.page { max-width: 670px; padding: .5em 0 100px 0; margin: auto; }
+.page h2 { font-size: 20px; text-align: center; }
+.page p.date { margin-top: 0; color: #808080;  text-align: center; }
+
+.page .column, .project .column { float: left; width: 100%; }
+
+.project { padding: .5em 240px 0 240px; margin: auto; }
+.project h2 { font-size: 20px; text-align: center; padding-top: 8px; }
+
+.page .column { float: left; }
  
 .projectcontent { padding-bottom: 100px; }
 
 .relatedprojects { border-top: 1px solid #000; padding-bottom: 100px; overflow: hidden; }
 .relatedprojects h3 { font-size: 1em; margin: .25em 0 1em 0; font-weight: normal; }
 
-.pagenav { font-family: "Icons", sans-serif; text-align: center; font-size: 30px; margin: 11px 0 0 0; }
-.pagenav a { padding: 0 11px; }
+.pagenav { font-size: 20px; position: fixed; top: 0; right: 0; padding: 13px 30px 0 0; }
+.pagenav a {  }
 
 .postmeta { font-size: 14px; line-height: 1.35; overflow: hidden; }
 .postmeta .column { float: left; width: 200px; }
 .postmeta ul {list-style: none; margin: 0; padding: 0; }
 .postmeta li { margin: 0; padding: 0;  }
 
+/* Content Columns */
+
+.contentcolumns { overflow: hidden; }
+.contentcolumns .contentcolumn { float: left; width: 50%; box-sizing: border-box; }
+.contentcolumns .contentcolumn:first-child { padding-right: .5em; }
+.contentcolumns .contentcolumn:last-child { padding-left: .5em; }
+
 /* Masonry */
 
 .masonry {  padding-top: .5em;  overflow: hidden; }
 .masonry h2 { font-size: 40px; text-align: center; }
 
-.masonry .grid { overflow: hidden; clear: both; }
+.masonry .grid { overflow: hidden; clear: both; margin-left: 240px; }
 
 .griditem { float: left; position: relative; }
 .griditempadding { margin: 0 30px 42px 0; position: relative; }
@@ -116,7 +162,8 @@ hr { border: 0; height: 1px; background: #000; }
 /* Slideshow */
 .slides {text-align: center; }
 .slide { overflow: hidden; }
-.slideinner { margin: 50px; display: block; }
+.slideinner { margin: 50px 0; display: block; position: relative; }
+/*.slideinner a { position: absolute; left: 0; top: 50%; -webkit-transform:translateY(-50%); transform:translateY(-50%); width: 100%; }*/
 
 .nextslide {
 	cursor: url('images/down-1x.png'), auto;

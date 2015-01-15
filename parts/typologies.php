@@ -13,7 +13,7 @@ foreach ($categories as $category) :
 
 	$termlink = get_term_link( $category->slug, $taxonomy ); 
 
-	echo '<h2><a href="' . $termlink . '">' . $category->name . '</a></h2>';
+//	echo '<h2><a href="' . $termlink . '">' . $category->name . '</a></h2>';
 
 	echo '<div class="grid">';
 

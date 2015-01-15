@@ -27,21 +27,30 @@
 		<?php wp_head(); ?>
 
 </head>
-<body>
+<body <?php if ( is_search() ) echo 'class="black"'; ?>>
 
 <div class="topbar">
 
 	<div class="searchbox" style="display: none;">
 		<form method="get" id="searchform" action="/">
-			<div class="inputmargin"><input type="search" name="s" id="s" onfocus="if(this.value == 'Search here...') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Search here...'; }" value="Search here..."></div>
 			<span class="closesearch">Close</span>
+			<div class="inputmargin">
+				<div class="searchborder"></div>
+				<input type="search" name="s" id="s" onfocus="if(this.value == 'Search...') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Search...'; }" value="Search...">
+			</div>
 		</form>
 	</div>
 
 	<div class="headeranchor">
 		<div class="header">
 
-			<div class="logo"><h1><a href="/"><span class="e">E</span><span class="t">T</span><span class="c">C</span><span class="everything"> <?php bloginfo('name'); ?></span></a></h1></div>
+			<div class="logo">
+				<h1><a href="/">
+					<span class="e">E<span>verything</span></span>
+					<span class="t">T<span>ype</span></span>
+					<span class="c">C<span>ompany</span></span>
+				</a></h1>
+			</div>
 
 			<?php get_template_part('parts/navigation'); ?>
 

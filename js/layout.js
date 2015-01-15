@@ -35,6 +35,7 @@
 		if ($('#wpadminbar').length != 0) {
 			var adminbarheight = $('#wpadminbar').outerHeight();
 			$('.topbar').css('top', adminbarheight + 'px');
+			$('.pagenav').css('top', adminbarheight + 'px');
 
 			pagetitleTop += adminbarheight;
 		}

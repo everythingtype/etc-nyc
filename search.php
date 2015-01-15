@@ -1,22 +1,21 @@
 <?php get_header(); ?>
 
-	<div class="page">
+<!-- search.php -->
 
-	<h2><?php printf( __( 'Search Results for: %s'), get_search_query() ); ?></h2>
+<div class="searchlist">
+
+	<h2>Results &ldquo;<?php printf( __( '%s'), get_search_query() ); ?>&rdquo;</h2>
 
 	<?php if (have_posts()) : ?>
 
+		<ul>
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-
-			<?php if ( has_post_thumbnail() ) : ?>
-				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
-			<?php endif; ?>
-
-			<?php the_excerpt(); ?>
+			<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
 		<?php endwhile; ?>
+
+		</ul>
 
 	<?php else : ?>
 
@@ -26,6 +25,6 @@
 
 	<?php endif; ?>
 
-	</div>
+</div>
 
 <?php get_footer(); ?>

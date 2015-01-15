@@ -1,1 +1,5 @@
-body, #search_input { font-family: "futura-pt",sans-serif; }
+body, #s, input[type=submit] { font-family: "futura-pt",sans-serif !important; }
+
+.logo .e { padding-left: 6px; }
+.logo .t { padding-left: 9px; }
+.logo .c { padding-left: 0px; }
