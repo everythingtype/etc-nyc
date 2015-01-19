@@ -60,10 +60,10 @@
 				endif; ?>
 
 				<div class="slide" id="slide<?php echo $i; ?>">
-					<div class="slideinner">
-						<?php $i++; ?>
-						<a href="#slide<?php echo $i; ?>" class="nextslide"><img src="<?php echo $image['url'];  ?>" alt="<?php echo $alt; ?>" /></a>
-					</div>
+						<div class="slideinner">
+							<?php $i++; ?>
+							<a href="#slide<?php echo $i; ?>" class="nextslide"><img src="<?php echo $image['url'];  ?>" alt="<?php echo $alt; ?>" /></a>
+						</div>
 				</div>
 
 			<?php endwhile; ?> 
