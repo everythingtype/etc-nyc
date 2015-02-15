@@ -1,11 +1,11 @@
 /*
 Theme Name: ETC-NYC
 Theme URI: http://github.com/everythingtype/etc-nyc
-Author: Marty Spellerberg
-Author URI: http://www.martyspellerberg.com/
+Author: Spellerberg Associates
+Author URI: http://www.spellerbergassociates.com/
 
 Designed by Everything Type Company, http://www.etc-nyc.com/
-Developed by Marty Spellerberg, http://www.martyspellerberg.com/
+Developed by Spellerberg Associates, http://www.spellerbergassociates.com/
 
 */
 
@@ -43,9 +43,8 @@ a:hover { color: #000; }
 
 .ui-helper-hidden-accessible { display: none; }
 ul.ui-autocomplete { position: absolute; list-style: none; margin: 0; padding: 10px 20px 14px 20px; background: #000; z-index: 100; font-size: 40px; }
-ul.ui-autocomplete li {  margin: 0; padding: 0; }
-ul.ui-autocomplete li a { color: #8f8f8a; }
-ul.ui-autocomplete li a:hover { color: #fff; cursor: pointer; }
+ul.ui-autocomplete li {  margin: 0; padding: 0; color: #8f8f8a;  }
+ul.ui-autocomplete li:hover { color: #fff; cursor: pointer; }
 
 .black .searchbox { background: #fff; color: #000; }
 .black .searchbox #s { background: #fff; color: #000; }
@@ -101,7 +100,11 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 
 .home { padding-top: .5em; max-width: 970px; margin: auto; }
 .home .column { float: left; }
-.homecontent { font-size: 40px; line-height: 1.2; padding-bottom: 80px; }
+.homecontent { font-size: 40px; line-height: 1.2; padding-bottom: 20px; overflow: hidden; }
+
+.homebottom { font-size: 40px; line-height: 1.2; padding-bottom: 80px; overflow: hidden; }
+.homebottom h2 { font-size: 40px; color: #808080; margin: 25px 0; }
+.homebottom h2 a { color: #808080; }
 
 .page { max-width: 670px; padding: .5em 0 100px 0; margin: auto; }
 .page h2 { font-size: 20px; text-align: center; }
@@ -145,7 +148,7 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 .griditempadding { margin: 0 30px 42px 0; position: relative; }
 .thumbnail { line-height: 0; padding: 0 0 43px 0; text-align: center; }
 .thumbnailpadding {}
-.thumbnailalign { display: table-cell; vertical-align: middle; }
+.thumbnailalign { display: table-cell; vertical-align: bottom; }
 
 .gridcaption {border-top: 1px solid #000; background: #fff; padding: 7px 0 0 0; position: absolute; bottom: 0; left: 0; width: 100%; }
 
@@ -160,14 +163,22 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 .relatedproject .griditem .thumbnailpadding, .grid .griditem .thumbnailalign { width: 270px; height: 240px;  }
 
 /* Slideshow */
-.slides {text-align: center; }
-.slide { overflow: hidden; }
-.slideinner { display: block; position: relative; height: 100%; width: 100%; box-sizing: border-box; }
-.slideinner img { padding: 50px 0; box-sizing: border-box; position: absolute; top: 50%; -webkit-transform:translate(-50%,-50%); transform:translateY(-50%,-50%);
- left: 50%;
-	 } 
+.slides {  margin: auto; }
+.slides .slide { width: 100%; text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.slide img { margin: auto; padding: 50px 0; box-sizing: border-box; }
 
-/*.slideinner a { position: absolute; left: 0; top: 50%; -webkit-transform:translateY(-50%); transform:translateY(-50%); width: 100%; }*/
+.slide .slideinner { padding: 50px 0; box-sizing: border-box; }
+.slide .slideinner .next-slide { height: 100%; }
+.slide .slideinner img { padding: 0; }
+
+.slidecaption {clear: both; width: 100%; text-align: left; }
+.slidecaption .title { color: #808080; }
+.slidecaption a { float: right;}
+
 
 .nextslide {
 	cursor: url('images/down-1x.png'), auto;

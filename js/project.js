@@ -20,6 +20,15 @@ $(document).ready(function() {
 			'padding-top' : headerheight + 'px'
 		});
 
+		$('.slideinner').css({
+	 		'max-height': contentheight +'px',
+		});
+
+		$('.slide img').css({
+	 		'max-height': contentheight +'px',
+		});
+
+
 		var galleryheight = $('.slides').outerHeight();
 
 	}

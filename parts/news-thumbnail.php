@@ -24,8 +24,8 @@
 		<div class="gridcaption">
 			<h4>
 				<a href="<?php the_permalink(); ?>">
-					<span class="category"><?php echo etc_singularize($typologies[0]->name); ?></span> <?php echo etc_singularize($clients[0]->name); ?>
-					<div class="meta"><?php the_title(); ?><br /><?php echo etc_singularize($dates[0]->name); ?></div>
+					<?php the_time('F j, Y'); ?>
+					<div class="meta"><?php the_title_attribute(); ?></div>
 				</a>
 			</h4>
 		</div>

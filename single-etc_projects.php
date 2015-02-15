@@ -52,18 +52,11 @@
 			<div class="slides">
 			<?php while ( have_rows('project_images') ) : the_row(); ?>
 
-				<?php $image = get_sub_field('image');
-				if ( $image['alt'] ) :
-					$alt = $image['alt']; 
-				else :
-					$alt = $image['title']; 
-				endif; ?>
+				<?php $image = get_sub_field('image'); ?>
 
 				<div class="slide" id="slide<?php echo $i; ?>">
-						<div class="slideinner">
-							<?php $i++; ?>
-							<a href="#slide<?php echo $i; ?>" class="nextslide"><img src="<?php echo $image['url'];  ?>" alt="<?php echo $alt; ?>" /></a>
-						</div>
+					<?php $i++; ?>
+					<a href="#slide<?php echo $i; ?>" class="nextslide"><?php spellerberg_the_image($image['id']); ?></a>
 				</div>
 
 			<?php endwhile; ?> 
@@ -100,5 +93,3 @@
 <?php endif; ?>
 
 <?php get_footer(); ?>
-
-
