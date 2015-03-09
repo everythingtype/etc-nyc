@@ -71,6 +71,8 @@ h1 a:hover span span { display: inline; }
 h2 { line-height: 1.25; font-weight: normal; margin: 0; }
 h2 a { color: #000; }
 
+#infolink { color: #8f8f8a; display: block; cursor: pointer; }
+
 h4 { font-size: 14px; line-height: 1.35; margin: 0; font-weight: normal; }
 h4 a { color: #000; }
 
@@ -179,7 +181,6 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 .slidecaption .title { color: #808080; }
 .slidecaption a { float: right;}
 
-
 .nextslide {
 	cursor: url('images/down-1x.png'), auto;
 	cursor: -webkit-image-set(
@@ -187,6 +188,7 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 	  url('images/down-2x.png') 2x
 	), auto;
 }
+
 /* Footer */
 
 .footer {display: none; }

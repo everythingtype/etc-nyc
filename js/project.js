@@ -1,5 +1,20 @@
 (function($) {
-$(document).ready(function() {
+
+	function setupInfoLink() {
+		$('h2').append('<span id="infolink">Info</a>');
+	}
+
+	function toggleInfoLink() {
+		if ( $('#infolink').hasClass('active') ) {
+			$('#infolink').removeClass('active');			
+			$('#infolink').html('Info');
+			$('.slides').show();
+		} else {
+			$('#infolink').addClass('active');
+			$('#infolink').html('Images');
+			$('.slides').hide();
+		}
+	}
 
 	function setHeights() {
 
@@ -37,34 +52,42 @@ $(document).ready(function() {
 	  setHeights();
 	});
 
-	setHeights();
+	$(document).ready(function() {
+		setupInfoLink();
+		setHeights();
 
-});
+		$('#infolink').on('click', function( event ) {
+			event.preventDefault();
+			toggleInfoLink();
+		});
 
-$(function() {
+	});
 
-  $('a[href*=#]:not([href=#])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
 
-		var wpadminbar = 0;
+	$(function() {
 
-		if ($('#wpadminbar').length != 0) {
-			wpadminbar =+ $('#wpadminbar').outerHeight();
-		}
+	  $('a[href*=#]:not([href=#])').click(function() {
+	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	      var target = $(this.hash);
+	      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	      if (target.length) {
 
-		var targetoffset = target.offset().top - wpadminbar;
+			var wpadminbar = 0;
 
-        $('html,body').animate({
-          scrollTop: targetoffset
-        }, 250);
-        return false;
-      }
-    }
-  });
-});
+			if ($('#wpadminbar').length != 0) {
+				wpadminbar =+ $('#wpadminbar').outerHeight();
+			}
+
+			var targetoffset = target.offset().top - wpadminbar;
+
+	        $('html,body').animate({
+	          scrollTop: targetoffset
+	        }, 250);
+	        return false;
+	      }
+	    }
+	  });
+	});
 
 })(jQuery);
 

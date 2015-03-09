@@ -63,7 +63,7 @@
 			</div>
 		<?php endif; ?>
 
-		<div id="slide<?php echo $i; ?>">
+		<div id="slide<?php echo $i; ?>"><a id="info"></a>
 
 			<?php if ( get_the_content() != '' ) : ?>
 				<div class="projectcontent">
