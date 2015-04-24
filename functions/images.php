@@ -3,60 +3,32 @@
 // Post Thumbnails
 add_theme_support( 'post-thumbnails' );
 
+// High Quality
+add_filter( 'jpeg_quality', create_function( '', 'return 100;' ) );
 
-// Image Sizes
+// Sets of sizes appropriate for srcset
 add_image_size( 'gridthumb', 540 );
+
 add_image_size( 'padmini', 1024 );
 add_image_size( 'phone', 1136 );
 add_image_size( 'phoneplus', 1334 );
 add_image_size( 'padretina', 2048 );
 
-function spellerberg_get_image($imageid,$fallbacksize = 'full') {
+function spellerberg_this_sites_sizesets() {
 
-	$gridthumb = wp_get_attachment_image_src( $imageid, 'gridthumb');
-	$padmini = wp_get_attachment_image_src( $imageid, 'padmini');
-	$phone = wp_get_attachment_image_src( $imageid, 'phone');
-	$phoneplus = wp_get_attachment_image_src( $imageid, 'phoneplus');
-	$padretina = wp_get_attachment_image_src( $imageid, 'padretina');
-	$full = wp_get_attachment_image_src( $imageid, 'full');
-	$fallback = wp_get_attachment_image_src( $imageid, $fallbacksize);
+	$sets = Array();
 
-	$alt_text = get_post_meta($imageid, '_wp_attachment_image_alt', true);
+	// WordPress Default Sizes
+	$sets[] = Array('thumbnail','medium','large','full');
 
-	if ( !$alt_text || $alt_text == "" ) :
-		$attachment = get_post($imageid);
-		$alt_text = $attachment->post_title;
-	endif;
+	// Custom sizes as defined via add_image_size, 
+	// grouped into sets appropriate for srcset,
+	// ordered from smallest to largest.
+	$sets[] = Array('gridthumb');
+	$sets[] = Array('padmini','phone','phoneplus','padretina');	
 
-	$output = '<img srcset="' . $gridthumb[0] . ' ' . $gridthumb[1] . 'w,
-				' . $padmini[0] . ' ' . $padmini[1] . 'w,
-				' . $phone[0] . ' ' . $phone[1] . 'w,
-				' . $phoneplus[0] . ' ' . $phoneplus[1] . 'w,
-				' . $padretina[0] . ' ' . $padretina[1] . 'w,
-				' . $full[0] . ' ' . $full[1] . 'w" 
-		src="' . $fallback[0] . '"
-		alt="' . $alt_text . '">';
-
-	return $output;
-
+	return $sets;
 }
-
-
-function spellerberg_the_image($imageid,$fallbacksize = 'full') {
-	echo spellerberg_get_image($imageid,$fallbacksize);
-}
-
-function spellerberg_get_thumbnail($post_id, $fallbacksize = 'full') {
-	$imageid = get_post_thumbnail_id( $post_id );
-	if ( $imageid ) :
-		return spellerberg_get_image($imageid,$fallbacksize);
-	endif;
-}
-
-function spellerberg_the_thumbnail($post_id, $fallbacksize = 'full') {
-	echo spellerberg_get_thumbnail($post_id, $fallbacksize);
-}
-
 
 //http://speakinginbytes.com/2012/11/responsive-images-in-wordpress/
 function remove_thumbnail_dimensions( $html ) {

@@ -195,3 +195,24 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 
 .toplink { font-family: "Icons", sans-serif; text-align: center; font-size: 26.5px; margin: 0; }
 .js .toplink { position: fixed; bottom: 30px; left: 30px;  }
+
+/* Intro Lightbox */
+
+.lightbox { position: fixed; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden; z-index: 100; background: #1E1E14; color: #fff; font-family: "nimbus-sans",sans-serif !important; }
+.lightbox .box { height: 100%; overflow: auto; position: relative; overflow-y: scroll; -webkit-overflow-scrolling: touch; }
+.lightbox a { color: #fff; }
+.lightbox span span { display: inline; }
+
+.intrologo {  font-size: 82px; line-height: 82px;  font-weight: normal; margin: 19px 0 0 20px; text-align: left; float: left; padding: 6px 5px 0 0;}
+.intrologo span { display: block; }
+.intrologo .e { padding-left: 4px; }
+.intrologo .t { padding-left: 7px; }
+.intrologo .c { padding-left: 0px; }
+
+.intromission { float: left; font-size: 82px; line-height: 82px;  font-weight: normal; max-width: 950px; padding: 25px 0 0 66px; }
+.intromission p { margin: 0; }
+.intromission .line { display: block; }
+
+.closelightbox { cursor: pointer; display: block; font-family: "Icons"; font-size: 38px; z-index: 2; }
+.closelightbox span { display: none; }
+.palette-black .closelightbox { color: #fff; }

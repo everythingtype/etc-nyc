@@ -5,7 +5,7 @@ require_once( 'functions/columns.php' );
 require_once( 'functions/enqueue.php' );
 require_once( 'functions/images.php' );
 require_once( 'functions/projects.php' );
-
+require_once( 'functions/spellerberg_wpsrcset.php' );
 
 function is_page_or_subpage_of($slug) {
 
@@ -45,7 +45,6 @@ function is_etc_section( $label ) {
 	$isWork = false;
 	$isNews = false;
 	$isAbout = false;
-	$isEverything = false;
 	$isTypologies = false;
 	$isClients = false;
 	$isFonts = false;
@@ -53,13 +52,10 @@ function is_etc_section( $label ) {
 	if ( is_category('news') || in_category('news') ) $isNews = true;
 	if ( is_page('profile') || is_page('people') ) $isAbout = true;
 
-
-	if ( is_page('everything') || is_tax('etc_project_dates') ) $isEverything = true;
 	if ( is_tax('etc_project_typologies') ) $isTypologies = true;
-	if ( is_page('clients') || is_tax('etc_project_clients') ) $isClients = true;
-	if ( is_page('fonts') || is_tax('etc_project_fonts') ) $isFonts = true;
+	if ( is_tax('etc_project_clients') ) $isClients = true;
 
-	if ( $isEverything == true || $isClients == true || $isFonts == true || $isTypologies == true ) $isWork = true;
+	if ( is_front_page() || $isClients == true || $isTypologies == true ) $isWork = true;
 
 
 	// echo "isWork: " . $isWork;
