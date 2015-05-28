@@ -47,7 +47,7 @@
 		<div class="header">
 
 			<div class="logo">
-				<h1><a href="/">
+				<h1><a href="/everything">
 					<span class="e">E<span>verything</span></span>
 					<span class="t">T<span>ype</span></span>
 					<span class="c">C<span>ompany</span></span>

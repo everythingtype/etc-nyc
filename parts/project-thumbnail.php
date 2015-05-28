@@ -1,5 +1,7 @@
 <?php 
-	$typologies = wp_get_post_terms( $post->ID, 'etc_project_typologies' ); 
+
+	$typologies = etc_cleaned_post_terms( $post->ID ); 
+
 	$clients = wp_get_post_terms( $post->ID, 'etc_project_clients' );
 	$dates = wp_get_post_terms( $post->ID, 'etc_project_dates' );
 	$prominence = get_field('project_prominence');
@@ -13,6 +15,7 @@
 ?>
 
 <div class="griditem <?php echo $prominence; ?>">
+
 	<div class="griditempadding">
 		<div class="thumbnail">
 			<div class="thumbnailpadding">

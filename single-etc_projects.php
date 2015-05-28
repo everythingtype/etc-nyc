@@ -39,12 +39,13 @@
 
 		$prevlink = get_permalink($prevID);
 		$nextlink = get_permalink($nextID);
+		$nextitle = get_the_title($nextID);
 
 		wp_reset_query();
 
 		?>
 
-		<p class="pagenav"><a href="<?php echo $nextlink; ?>">Next Project</a></p>
+		<p class="pagenav"><a href="<?php echo $nextlink; ?>"><span class="nextproject">Next Project</span><span class="separator">: </span><span class="nexttitle"><?php echo $nextitle; ?></span></a></p>
 
 		<?php $i = 0; ?>
 
@@ -60,10 +61,16 @@
 				</div>
 
 			<?php endwhile; ?> 
-			</div>
+
+			<?php if ( get_the_content() != '' ) : ?>
+				<a id="slide<?php echo $i; ?>" class="infoslide"></a>
+				<a id="info"></a>
+				<h3><?php the_title(); ?></h3>
+			<?php endif; ?>
+
+		</div>
 		<?php endif; ?>
 
-		<div id="slide<?php echo $i; ?>"><a id="info"></a>
 
 			<?php if ( get_the_content() != '' ) : ?>
 				<div class="projectcontent">

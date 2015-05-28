@@ -55,7 +55,7 @@ function is_etc_section( $label ) {
 	if ( is_tax('etc_project_typologies') ) $isTypologies = true;
 	if ( is_tax('etc_project_clients') ) $isClients = true;
 
-	if ( is_front_page() || $isClients == true || $isTypologies == true ) $isWork = true;
+	if ( is_front_page() || is_page('everything') || $isClients == true || $isTypologies == true ) $isWork = true;
 
 
 	// echo "isWork: " . $isWork;
@@ -97,5 +97,30 @@ function etc_singularize($term) {
 	endif;
 	
 }
+
+function etc_cleaned_post_terms( $post_id ) {
+
+	// Removes the term "Featured"
+
+	$terms = wp_get_post_terms( $post_id, 'etc_project_typologies' ); 
+
+	$featuredKey = null;
+
+	foreach ($terms as $key => $sub ) :
+		if ($sub->slug == 'featured' ) :
+			$featuredKey = $key;
+		endif;
+	endforeach;
+
+	if ( $featuredKey !== null ) :
+		unset($terms[$featuredKey]);
+		$terms = array_values($terms);	
+	endif;
+
+	return $terms;
+
+}
+
+
 
 ?>

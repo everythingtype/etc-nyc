@@ -61,6 +61,20 @@
 			toggleInfoLink();
 		});
 
+		$( ".pagenav" ).on({
+			mouseenter: function() {
+				$('.nextproject').hide();
+				$('.nexttitle').show();
+			}, mouseleave: function() {
+				$('.nexttitle').hide();
+				$('.nextproject').show();
+			}
+		});
+
+		$('.pagenav').on('click', function( event ) {
+			
+		});
+
 	});
 
 
