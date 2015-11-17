@@ -111,7 +111,7 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 .homebottom h2 a { color: #808080; }
 
 .page { max-width: 670px; padding: .5em 0 100px 0; margin: auto; }
-.page h2 { font-size: 20px; text-align: center; }
+.page h2 { font-size: 20px; text-align: center; padding-top: 8px; }
 .page p.date { margin-top: 0; color: #808080;  text-align: center; }
 
 .page .column, .project .column { float: left; width: 100%; }
