@@ -163,8 +163,6 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 
 .gridcaption {border-top: 1px solid #000; background: #fff; padding: 7px 0 0 0; position: absolute; bottom: 0; left: 0; width: 100%; }
 
-.griditem .category { color: #808080; }
-.griditem .client {}
 .griditem .meta {color: #808080; display: none; overflow: hidden; }
 
 .grid .griditem.regular .thumbnailpadding, 

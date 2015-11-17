@@ -1,9 +1,5 @@
 <?php 
 
-	$typologies = etc_cleaned_post_terms( $post->ID ); 
-
-	$clients = wp_get_post_terms( $post->ID, 'etc_project_clients' );
-	$dates = wp_get_post_terms( $post->ID, 'etc_project_dates' );
 	$prominence = get_field('project_prominence');
 
 	if ( $prominence == "large" ) :
@@ -27,10 +23,12 @@
 		<div class="gridcaption">
 			<h4>
 				<a href="<?php the_permalink(); ?>">
-					<span class="category"><?php echo etc_singularize($typologies[0]->name); ?></span> <?php echo etc_singularize($clients[0]->name); ?>
-					<div class="meta"><?php the_title(); ?><br /><?php echo etc_singularize($dates[0]->name); ?></div>
+					<span class="category"><?php the_title(); ?></span>
+					<div class="meta"><?php echo etc_thumbmeta($post->ID); ?></div>
 				</a>
 			</h4>
 		</div>
 	</div>
 </div>
+
+

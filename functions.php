@@ -92,6 +92,8 @@ function etc_singularize($term) {
 		return 'Publication';
 	elseif ( $term == 'Case Studies' ) :
 		return 'Case Study';
+	elseif ( $term == 'Websites' ) :
+		return 'Website';
 	else :
 		return $term;
 	endif;
@@ -121,6 +123,36 @@ function etc_cleaned_post_terms( $post_id ) {
 
 }
 
+function etc_thumbmeta( $post_id ) {
 
+		$typologyoutput = '';
+		$fontoutput = '';
+		$output = '';
+
+		$typologies = etc_cleaned_post_terms( $post_id ); 
+		$typologycount = count($typologies);
+		$i = 1;
+		foreach ( $typologies as $typology ) :
+			$typologyoutput .= etc_singularize($typology->name);
+			if ( $i < $typologycount ) $typologyoutput .= ', ';
+			$i++;
+		endforeach;
+
+		$fonts = wp_get_post_terms( $post_id, 'etc_project_fonts' );
+		$fontcount = count($fonts);
+		$i = 1;
+		foreach ( $fonts as $font ) :
+			$fontoutput .= $font->name;
+			if ( $i < $fontcount ) $fontoutput .= ', ';
+			$i++;
+		endforeach;
+
+		if ( $typologyoutput != '' ) $output .= $typologyoutput;
+		if ( $fontoutput != '' && $typologyoutput != '' ) $output .= '<br />';
+		if ( $fontoutput != '' ) $output .= 'Fonts: ' . $fontoutput;
+
+		if ( $output != '' ) return $output;
+
+}
 
 ?>
