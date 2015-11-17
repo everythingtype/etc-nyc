@@ -8,18 +8,4 @@
 		</ul>
 	</div>
 
-	<?php if ( is_etc_section('work') ) : ?>
-		<div class="subnav">
-			<ul>
-				<li <?php if ( is_front_page() || is_page('everything') ) echo 'class="active"'; ?>><a href="/everything">All Projects</a></li>
-				<li <?php if ( is_tax('etc_project_typologies','branding') ) echo 'class="active"'; ?>><a href="/typologies/branding/">Branding</a></li>
-				<li <?php if ( is_tax('etc_project_typologies','publications') ) echo 'class="active"'; ?>><a href="/typologies/publications/">Publications</a></li>
-				<li <?php if ( is_tax('etc_project_typologies','websites') ) echo 'class="active"'; ?>><a href="/typologies/websites/">Websites</a></li>
-				<li <?php if ( is_tax('etc_project_typologies','art-direction') ) echo 'class="active"'; ?>><a href="/typologies/art-direction/">Art Direction</a></li>
-				<li <?php if ( is_tax('etc_project_typologies','signage') ) echo 'class="active"'; ?>><a href="/typologies/signage/">Signage</a></li>
-				<li <?php if ( is_tax('etc_project_typologies','type-design') ) echo 'class="active"'; ?>><a href="/typologies/type-design/">Type Design</a></li>
-			</ul>
-		</div>
-	<?php endif; ?>
-
 </div>
