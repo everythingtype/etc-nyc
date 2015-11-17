@@ -174,8 +174,8 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 
 
 .grid .griditem.large .thumbnailpadding, 
-	.grid .griditem.large .thumbnailalign { width: 570px; height: 565px; }	
-.grid .griditem.large .thumbnailalign img { max-width: 570px; max-height: 565px; }	
+	.grid .griditem.large .thumbnailalign { width: 570px; height: 395px; }	
+.grid .griditem.large .thumbnailalign img { max-width: 570px; max-height: 395px; }	
 
 
 .relatedproject .griditem .thumbnailpadding, 
