@@ -155,31 +155,37 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 
 .masonry .grid { overflow: hidden; clear: both; margin-left: 240px; }
 
-.griditem { float: left; position: relative; }
-.griditempadding { margin: 0 30px 42px 0; position: relative; }
-.thumbnail { line-height: 0; padding: 0 0 43px 0; text-align: center; }
-.thumbnailpadding {}
-.thumbnailalign { display: table-cell; vertical-align: bottom; }
+.griditem { position: relative; width: 100%; }
+.griditem img { width: 100%; }
 
+.griditem .ratio { padding-top: 80%; }
+
+/*
+.griditem.large { width: 50%; }
+.griditem.large .ratio { padding-top: 80%; }
+
+.griditem.regular { width: 50%; }
+.griditem.regular .ratio { padding-top: 80%; }
+
+.relatedproject .griditem { width: 50%; }
+.relatedproject .griditem .ratio { padding-top: 80%; }
+*/
+.griditem .gridinner { position: absolute; top: 0; right: 30px; bottom: 42px; left: 0; }
+
+.thumbnail { line-height: 0; padding: 0 0 43px 0; text-align: center; height: 100%; }
+.thumbnailpadding {  position: relative; height: 100%; } 
+.thumbnailalign { position: absolute; left: 0; right: 0; bottom: 43px;  }
 .gridcaption {border-top: 1px solid #000; background: #fff; padding: 7px 0 0 0; position: absolute; bottom: 0; left: 0; width: 100%; }
 
 .griditem .meta {color: #808080; display: none; overflow: hidden; }
 
-.grid .griditem.regular .thumbnailpadding, 
-	.grid .griditem.regular .thumbnailalign { width: 270px; height: 240px;  }
-.grid .griditem.regular .thumbnailalign img { max-width: 270px; max-height: 240px;  }
+@media screen and (min-width: 1000px) {
+	.griditem { width: 50%;  float: left; }
+}
 
-
-
-.grid .griditem.large .thumbnailpadding, 
-	.grid .griditem.large .thumbnailalign { width: 570px; height: 395px; }	
-.grid .griditem.large .thumbnailalign img { max-width: 570px; max-height: 395px; }	
-
-
-.relatedproject .griditem .thumbnailpadding, 
-	.relatedproject .griditem .thumbnailalign { width: 270px; height: 240px;  }
-.relatedproject .griditem .thumbnailalign img { max-width: 270px; max-height: 240px;  }
-
+@media screen and (min-width: 2100px) {
+	.griditem { width: 33.3333333333%; }
+}
 
 /* Slideshow */
 .slides {  margin: auto; }

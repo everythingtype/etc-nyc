@@ -77,7 +77,7 @@ function spellerberg_sizesattr($imageid,$fallbacksize) {
 
 function spellerberg_srcsetattr( $imageid, $fallbacksize) {
 
-	$output == '';
+	$output = '';
 
 	$sizes = spellerberg_size_set($fallbacksize);
 
