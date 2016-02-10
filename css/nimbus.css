@@ -1,5 +1,11 @@
 body, #s, input[type=submit] { font-family: "nimbus-sans",sans-serif !important; }
 
-.logo .e { padding-left: 4px; }
-.logo .t { padding-left: 7px; }
+.logo .e { padding-left: 2px; }
+.logo .t { padding-left: 3px; }
 .logo .c { padding-left: 0px; }
+
+@media screen and (min-width: 700px) {
+	.logo .e { padding-left: 4px; }
+	.logo .t { padding-left: 7px; }
+	.logo .c { padding-left: 0px; }
+}

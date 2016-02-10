@@ -1,5 +1,13 @@
 (function($) {
 
+	function projectIsLarge() {
+		if ( $(".projectcue").css("float") == "right" ) { 
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	function setupInfoLink() {
 		$('h2').append('<span id="infolink">Info</a>');
 	}
@@ -29,11 +37,23 @@
 			wpadminbar =+ $('#wpadminbar').outerHeight();
 		} 
 
-		contentheight = contentheight - wpadminbar;		
-		$('.slide').css({
-	 		'height': contentheight +'px',
-			'padding-top' : headerheight + 'px'
-		});
+		contentheight = contentheight - wpadminbar;
+
+		if ( projectIsLarge() ) {
+
+			$('.slide').css({
+		 		'height': contentheight +'px',
+				'padding-top' : headerheight + 'px'
+			});
+
+		} else {
+
+			$('.slide').css({
+		 		'height': 'auto',
+				'padding-top' : 'auto'
+			});
+
+		}
 
 		$('.slideinner').css({
 	 		'max-height': contentheight +'px',
@@ -42,7 +62,6 @@
 		$('.slide img').css({
 	 		'max-height': contentheight +'px',
 		});
-
 
 		var galleryheight = $('.slides').outerHeight();
 

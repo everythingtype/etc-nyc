@@ -96,7 +96,7 @@
 
 	<?php endwhile; ?>
 	</div></div>
-
+	<div class="projectcue"></div>
 <?php endif; ?>
 
 <?php get_footer(); ?>

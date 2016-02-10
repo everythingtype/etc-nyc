@@ -1,6 +1,15 @@
 body, #s, input[type=submit] {  font-family: "old-standard",serif !important; }
 
 .logo h1 { padding-top: 3px; }
+
 .logo .e { padding-left: 1px; }
 .logo .t { padding-left: 0px; }
 .logo .c { padding-left: 2px; }
+
+@media screen and (min-width: 700px) {
+
+	.logo .e { padding-left: 1px; }
+	.logo .t { padding-left: 0px; }
+	.logo .c { padding-left: 1px; }
+
+}
