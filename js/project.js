@@ -1,3 +1,5 @@
+// ETC Project
+
 (function($) {
 
 	function projectIsLarge() {

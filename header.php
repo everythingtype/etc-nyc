@@ -60,7 +60,14 @@
 		</div>
 	</div>
 
+	<div class="menutoggle">
+		<span class="openmenu">Menu</span>
+		<span class="closemenu">Close</span>
+	</div>
+
 </div>
+
+<div class="scrollingcontent">
 
 <div class="layout">
 	

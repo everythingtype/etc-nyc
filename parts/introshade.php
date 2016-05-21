@@ -1,4 +1,4 @@
-<div id="introshade" class="lightbox">
+<div id="introshade" class="lightbox dark">
 	<div class="box">
 
 		<div class="intrologo">

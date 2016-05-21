@@ -1,6 +1,127 @@
+// ETC-NYC
+
 (function($) {
 
 	var toplinkVisible = false;
+	var resizeTimer = null;
+	var menuopen = false;
+	var wasDesktop = true;
+
+	jQuery.fn.openLightbox = function() {
+
+		menuopen = true;
+
+		if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+			myScrollTop = $('body').scrollTop();
+
+			var wpadminbar = 0; 
+			if ($('#wpadminbar').length != 0) {
+				wpadminbar = $('#wpadminbar').outerHeight();
+			}
+
+			thisOffset = myScrollTop - wpadminbar;
+			offsetString = "-" + thisOffset + "px";
+
+			$('.scrollingcontent').css({
+			    'top': offsetString,
+			    'position':'fixed'
+			});
+
+		}
+
+		$('body').addClass('haslightbox');
+		$(this).stop().slideDown("fast");
+	}
+
+	jQuery.fn.closeLightbox = function() {
+
+		if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+
+			$('.scrollingcontent').css({
+			    'top': "auto",
+			    'position':'static'
+			});
+
+			$( "body" ).scrollTop( myScrollTop );
+			myScrollTop = 0;
+
+		}
+
+		$('body').removeClass('haslightbox');
+		$(this).stop().slideUp("fast");
+	}
+
+	jQuery.fn.resetLightbox = function() {
+
+		if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+
+			$('.scrollingcontent').css({
+			    'top': "auto",
+			    'position':'static'
+			});
+
+			$( "body" ).scrollTop( myScrollTop );
+			myScrollTop = 0;
+
+		}
+
+		$('body').removeClass('haslightbox');
+		$(this).stop().hide();
+	}
+
+	function handleResize() {
+
+	    resizeTimer = null;
+
+		setupGrid();
+
+		if ( wasDesktop == true ) {
+
+			menuopen = false;
+
+			if ( isMobile() ) {
+
+				wasDesktop = false;
+
+
+			} else {
+
+
+			}
+
+		} else {
+			if( !isMobile() ) {
+
+				wasDesktop = true;
+				resetNav();
+
+			}
+		}
+
+
+	}
+
+
+	function isMobile() {
+		if ( $(".responsivecue").css("float") == "right" ) { 
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	function openNav() {
+		$("#navshade").openLightbox();
+	}
+
+	function closeNav() {
+		$("#navshade").closeLightbox();
+	}
+
+	function resetNav() {
+		$("#navshade").resetLightbox();
+	}
+
 
 	function showToplink() {
 		if ( toplinkVisible == false ) {
@@ -29,6 +150,8 @@
 		$('body').addClass('js');
 
 		$('#loading').html('<span>Loading...</span>');
+
+		resetNav();
 
 		var pagetitleTop = 0;
 
@@ -66,7 +189,7 @@
 
 	$(document).ready( function() {
 		setupLayout();
-		setupGrid();
+		handleResize();
 
 		$('.griditem').on("hover", function () {
 			$(this).find('.meta').slideToggle(100);
@@ -103,18 +226,31 @@
 			return false;
 		});
 
+		$('.openmenu').on("click", function(event) {
+			event.preventDefault();
+			openNav();
+		});
 
+		$('.closemenu').on("click", function(event) {
+			event.preventDefault();
+			closeNav();
+		});
 
 	});
 
 
 	$(window).load( function() {
 		$('#loading').hide();
-		setupGrid();
+		handleResize();
 	});
 
-	$(window).resize( function() {
-		setupGrid();
+	$(window).resize(function(){
+		// Resize actions are in handleResize()
+	    if (resizeTimer) {
+	        clearTimeout(resizeTimer);   // clear any previous pending timer
+	    }
+	    resizeTimer = setTimeout(handleResize, 25);   // set new timer
+
 	});
 
 
