@@ -6,12 +6,16 @@
 	var resizeTimer = null;
 	var menuopen = false;
 	var wasDesktop = true;
+	var myScrollTop = 0;
 
 	jQuery.fn.openLightbox = function() {
+
+		console.log('openLightbox');
 
 		menuopen = true;
 
 		if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+
 			myScrollTop = $('body').scrollTop();
 
 			var wpadminbar = 0; 
@@ -29,11 +33,19 @@
 
 		}
 
+		$('.openmenu').hide();
+		$('.closemenu').show();
+
 		$('body').addClass('haslightbox');
 		$(this).stop().slideDown("fast");
+
 	}
 
 	jQuery.fn.closeLightbox = function() {
+
+		console.log('closeLightbox');
+
+		var menuopen = false;
 
 		if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
@@ -46,6 +58,9 @@
 			myScrollTop = 0;
 
 		}
+
+		$('.openmenu').show();
+		$('.closemenu').hide();
 
 		$('body').removeClass('haslightbox');
 		$(this).stop().slideUp("fast");
@@ -53,6 +68,10 @@
 
 	jQuery.fn.resetLightbox = function() {
 
+		console.log('resetLightbox');
+
+		var menuopen = false;
+
 		if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
 			$('.scrollingcontent').css({
@@ -65,14 +84,37 @@
 
 		}
 
+		$('.openmenu').show();
+		$('.closemenu').hide();
+
 		$('body').removeClass('haslightbox');
 		$(this).stop().hide();
+
+	}
+
+	function setupHeights() {
+
+		console.log('setupHeights');
+
+		if ($('#wpadminbar').length != 0) {
+
+			var adminbarheight = $('#wpadminbar').outerHeight();
+			$('.menutoggle').css('top', adminbarheight + 'px');
+			$('.topbar').css('top', adminbarheight + 'px');
+			$('.pagenav').css('top', adminbarheight + 'px');
+			$('#navshade .box').css('margin-top', adminbarheight + 'px');
+
+		}
+
 	}
 
 	function handleResize() {
 
+		console.log('handleResize');
+
 	    resizeTimer = null;
 
+		setupHeights();
 		setupGrid();
 
 		if ( wasDesktop == true ) {
@@ -97,7 +139,6 @@
 
 			}
 		}
-
 
 	}
 
@@ -138,6 +179,9 @@
 	}
 
 	function setupGrid() {
+
+		console.log('setupGrid');
+
 		$('.grid').packery({
 			itemSelector: '.griditem',
 			transitionDuration: "0"
@@ -147,77 +191,26 @@
 
 	function setupLayout() {
 
+		console.log('setupLayout');
+
+		resetNav();
+		handleResize();
+
 		$('body').addClass('js');
 
 		$('#loading').html('<span>Loading...</span>');
 
-		resetNav();
-
-		var pagetitleTop = 0;
-
-		if ($('#wpadminbar').length != 0) {
-			var adminbarheight = $('#wpadminbar').outerHeight();
-			$('.topbar').css('top', adminbarheight + 'px');
-			$('.pagenav').css('top', adminbarheight + 'px');
-
-			pagetitleTop += adminbarheight;
-		}
-
-		var headerPadding = $('.header .padding').outerHeight();
+		$(".toplink").hide();
 
 	}
-
-
-	function closeSearch(first) {
-
-		$( ".searchbox" ).slideToggle( "fast", function() {
-			$('.searchtoggle').removeClass('active');
-		  });
-
-	}
-
-	function openSearch() {
-
-		$( ".searchbox" ).slideToggle( "fast", function() {
-		    // Animation complete.
-		  });
-
-		$('.searchtoggle').addClass('active');
-
-	}
-
 
 	$(document).ready( function() {
+
 		setupLayout();
-		handleResize();
 
 		$('.griditem').on("hover", function () {
 			$(this).find('.meta').slideToggle(100);
 		});
-
-		// Prevent search submission of default value
-		$('#searchform').submit(function(e){
-		    if ( $("#search_input").val() == "Search here...") {
-				return false;
-		    }
-		});
-
-
-		$('li.searchtoggle a').on('click', function( event ){
-			event.preventDefault();
-			if ( $(this).parent().hasClass('active') ) {
-				closeSearch();
-			} else {
-				openSearch();
-			}
-		});
-
-		$('.closesearch').on('click', function( event ) {
-			event.preventDefault();
-			closeSearch();
-		});
-
-		$(".toplink").hide();
 
 		$('.toplink').click(function () {
 			$('body,html').animate({
@@ -245,7 +238,7 @@
 	});
 
 	$(window).resize(function(){
-		// Resize actions are in handleResize()
+
 	    if (resizeTimer) {
 	        clearTimeout(resizeTimer);   // clear any previous pending timer
 	    }

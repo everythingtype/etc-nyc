@@ -1,7 +1,6 @@
 <?php
 
 // Includes
-require_once( 'functions/columns.php' );
 require_once( 'functions/enqueue.php' );
 require_once( 'functions/images.php' );
 require_once( 'functions/projects.php' );

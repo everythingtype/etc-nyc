@@ -1,16 +1,25 @@
 (function($) {
 
+	var splashScrollTop = 0;
+
 	jQuery.fn.openSplash = function() {
 
+		console.log('openSplash');
+
+		if ($('#wpadminbar').length != 0) {
+			var adminbarheight = $('#wpadminbar').outerHeight();
+			$('#introshade .box').css('margin-top', adminbarheight + 'px');
+		}
+
 		if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-			myScrollTop = $('body').scrollTop();
+			splashScrollTop = $('body').scrollTop();
 
 			var wpadminbar = 0; 
 			if ($('#wpadminbar').length != 0) {
 				wpadminbar = $('#wpadminbar').outerHeight();
 			}
 
-			thisOffset = myScrollTop - wpadminbar;
+			thisOffset = splashScrollTop - wpadminbar;
 			offsetString = "-" + thisOffset + "px";
 
 			$('.scrollingcontent').css({
@@ -22,9 +31,12 @@
 
 		$('body').addClass('haslightbox');
 		$(this).show();
+
 	}
 
 	jQuery.fn.closeSplash = function() {
+
+		console.log('closeSplash');
 
 		if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
@@ -33,14 +45,31 @@
 			    'position':'static'
 			});
 
-			$( "body" ).scrollTop( myScrollTop );
-			myScrollTop = 0;
+			$( "body" ).scrollTop( splashScrollTop );
+			splashScrollTop = 0;
 
 		}
 
+		setupHomeGrid();
+
 		$('body').removeClass('haslightbox');
 		$(this).stop().slideUp("fast");
+
+		window.history.replaceState("", "Everything", "/everything");
+
 	}
+
+	function setupHomeGrid() {
+
+		console.log('setupHomeGrid');
+
+		$('.grid').packery({
+			itemSelector: '.griditem',
+			transitionDuration: "0"
+		});	
+
+	}
+
 
 
 	function switchType() {
@@ -88,19 +117,12 @@
 
 	$(document).ready( function() {
 
-		var pagetitleTop = 0;
-
-		if ($('#wpadminbar').length != 0) {
-			var adminbarheight = $('#wpadminbar').outerHeight();
-			$('.box').css('margin-top', adminbarheight + 'px');
-		}
+		$('#introshade').openSplash();
 
 		$('.closelightbox').on("click", function(event) {
 			$('#introshade').closeSplash();
-			window.history.replaceState("", "Everything", "/everything");
 		});
 
-		$('#introshade').openSplash();
 
 	});
 

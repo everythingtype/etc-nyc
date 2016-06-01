@@ -32,7 +32,7 @@ a:hover { color: #000; }
 .black a:hover { color: #fff; }
 .black .active a { color: #fff; }
 
-.topbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 100;  border-top: 4px solid #000; }
+.topbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 99;  border-top: 4px solid #000; }
 
 .searchbox { background: #000; color: #fff; }
 .searchbox form { overflow: hidden; }
@@ -76,7 +76,7 @@ h1 a:hover span span { display: inline; }
 
 /* Navigation */
 
-.menutoggle { float: right; font-size: 20px; cursor: pointer; display: block; color: #8e8e89; padding: 15px 20px 0 0; }
+.menutoggle { float: right; font-size: 20px; cursor: pointer; display: block; color: #8e8e89; padding: 15px 20px 0 0; z-index: 102;  position: fixed; top: 0; right: 0; }
 .menutoggle:hover { color: #000; }
 
 .mobilenav .navigation { font-size: 20px; line-height: 1.25; padding: 15px 0 0 12px; }
@@ -86,9 +86,8 @@ h1 a:hover span span { display: inline; }
 .header .navigation { display: none; }
 
 @media screen and (min-width: 700px) {
-	.openmenu { padding: 22px 20px 0; }
 
-	.closemenu { padding: 22px 20px 0; }
+	.menutoggle { padding: 22px 20px 0; }
 	.mobilenav .navigation { font-size: 40px; line-height: 1.125; padding: 22px 0 0 20px; }
 	
 }
@@ -97,7 +96,7 @@ h1 a:hover span span { display: inline; }
 
 	.responsivecue { float: right; }
 
-	.openmenu { display: none; }
+	.menutoggle { display: none; }
 
 	.header .navigation { display: block; float: left; width: 130px; padding: 4px 10px 0 0;}
 	.header .navigation ul { list-style: none; margin: .5em 0 1.25em 0 ; padding: 0; }
@@ -146,15 +145,15 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 .navbalance { margin: 0 20px 0 75px; }
 
 .page { max-width: 670px; padding: .5em 0 100px 0;  }
-.page h2 { font-size: 20px; text-align: center; padding-top: 8px; }
+.page h2 { font-size: 20px; text-align: center; padding-top: 30px; }
 .page p.date { margin-top: 0; color: #808080;  text-align: center; }
 
 .page .column, .project .column { float: left; width: 100%; }
 
 .project { padding: .5em 20px 0 75px; margin: auto; }
-.project h2 { font-size: 20px; text-align: center; padding-top: 8px; }
+.project h2 { font-size: 20px; text-align: center; padding-top: 30px; }
 
-.page .column { float: left; }
+.page .column { float: left; padding-top: 25px; }
  
 
 .infoslide { position: relative; top: -28px; }
@@ -174,8 +173,12 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 
 
 @media screen and (min-width: 700px) {
+
+	.page .column { padding-top: 0; }
+	.page h2 { padding-top: 8px; }
 	.navbalance { margin: 0 20px 0 100px; }
 	.project { padding: .5em 20px 0 100px; }
+	.project h2 {  padding-top: 8px; }
 }
 
 @media screen and (min-width: 850px) {
@@ -208,7 +211,7 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 
 /* Masonry */
 
-.masonry {  padding-top: .5em;  overflow: hidden; }
+.masonry {  padding-top: 2.5em;  overflow: hidden; }
 .masonry h2 { font-size: 40px; text-align: center; }
 
 .masonry .grid { overflow: hidden; clear: both; margin-left: 75px; }
@@ -242,6 +245,7 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 }
 
 @media screen and (min-width: 850px) {
+	.masonry {  padding-top: .5em; }
 	.masonry .grid { margin-left: 240px; }
 }
 
@@ -284,28 +288,30 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 
 .toplink { font-family: "Icons", sans-serif; text-align: center; font-size: 26.5px; margin: 0; }
 .js .toplink { position: fixed; bottom: 30px; left: 30px;  }
+.toplink a { display: none; }
 
 #loading { position: fixed; bottom: 28px; left: 0; right: 0; text-align: center; }
+
+@media screen and (min-width: 700px) {
+	.toplink a { display: inline; }
+}
 
 /* Lightbox */
 
 .lightbox { position: fixed; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden;  }
 .lightbox .box { height: 100%; overflow: auto; position: relative; overflow-y: scroll; -webkit-overflow-scrolling: touch; }
 
-.lightbox.white { background: #fff; border-top: 4px solid #000; }
+#introshade .box { background: #1E1E14; color: #fff;  }
+#introshade a { color: #8e8e89; }
+#introshade a:hover { color: #fff; }
 
-.lightbox.dark { background: #1E1E14; color: #fff;  }
-.lightbox.dark a { color: #8e8e89; }
-.lightbox.dark a:hover { color: #fff; }
+#navshade { z-index: 100; }
+#navshade .box { background: #fff; border-top: 4px solid #000; }
 
-
-/* Mobile Nav */
-
-#navshade { z-index: 99; }
 
 /* Intro */
 
-#introshade {  font-family: "nimbus-sans",sans-serif !important; z-index: 101; }
+#introshade {  font-family: "nimbus-sans",sans-serif !important; z-index: 110; }
 
 .intrologo {  font-size: 40px; line-height: 40px; font-weight: normal; margin: 19px 0 0 20px; text-align: left; float: left; padding: 6px 5px 0 0;}
 .intrologo span { display: block; }
