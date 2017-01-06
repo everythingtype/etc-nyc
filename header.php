@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="google-site-verification" content="-1XKYdt9_gUnrr5TaFPPiwVqFI3eoSkxaiAbiqwLiTo" />
 	<title><?php 
 		wp_title( '&mdash;', true, 'right' );
 		bloginfo( 'name' ); 
