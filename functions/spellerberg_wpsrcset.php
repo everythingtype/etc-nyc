@@ -8,11 +8,11 @@
 function spellerberg_get_image($imageid,$fallbacksize = 'full',$sizeguidance = '') {
 
 	$sizeset = spellerberg_size_set($fallbacksize);
-	
+
 	$fallback = wp_get_attachment_image_src( $imageid, $fallbacksize);
-	
+
 	$alt_text = get_post_meta($imageid, '_wp_attachment_image_alt', true);
-	
+
 	if ( !$alt_text || $alt_text == "" ) :
 		$attachment = get_post($imageid);
 		$alt_text = $attachment->post_title;
@@ -24,12 +24,12 @@ function spellerberg_get_image($imageid,$fallbacksize = 'full',$sizeguidance = '
 		$sizesattr = spellerberg_sizesattr($imageid,$fallbacksize);
 	endif;
 
-	$output = '<img ';	
+	$output = '<img ';
 	$output .= $sizesattr;
 	$output .= spellerberg_srcsetattr( $imageid,$fallbacksize);
 	$output .= 'src="' . $fallback[0] . '" ';
 	$output .= 'alt="' . $alt_text . '">';
-	
+
 	return $output;
 
 }
@@ -53,10 +53,10 @@ function spellerberg_the_thumbnail($post_id, $fallbacksize = 'full',$sizeguidanc
 
 function spellerberg_sizesattr($imageid,$fallbacksize) {
 
-	/* 
+	/*
 		Using the RICG approach, which is:
-		The sizes attribute will be declared as 100% of the viewport 
-		width when the viewport width is smaller than the width of the image, 
+		The sizes attribute will be declared as 100% of the viewport
+		width when the viewport width is smaller than the width of the image,
 		or to the width of the image itself when the viewport is larger than the image.
 	*/
 
@@ -103,5 +103,3 @@ function spellerberg_size_set($keyword) {
 	endforeach;
 
 }
-
-?>

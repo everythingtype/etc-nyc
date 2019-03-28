@@ -27,7 +27,7 @@ function is_page_or_subpage_of($slug) {
 			$targetid = get_ID_by_slug($slug);
 
 			$ancestors = get_post_ancestors($post->ID);
-			
+
 			if (in_array($targetid, $ancestors)) return true;
 
 		endif;
@@ -92,7 +92,7 @@ function is_etc_section( $label ) {
 
 
 function etc_singularize($term) {
-	
+
 	if ( $term == 'Publications' ) :
 		return 'Publication';
 	elseif ( $term == 'Case Studies' ) :
@@ -102,14 +102,14 @@ function etc_singularize($term) {
 	else :
 		return $term;
 	endif;
-	
+
 }
 
 function etc_cleaned_post_terms( $post_id ) {
 
 	// Removes the term "Featured"
 
-	$terms = wp_get_post_terms( $post_id, 'etc_project_typologies' ); 
+	$terms = wp_get_post_terms( $post_id, 'etc_project_typologies' );
 
 	$featuredKey = null;
 
@@ -121,7 +121,7 @@ function etc_cleaned_post_terms( $post_id ) {
 
 	if ( $featuredKey !== null ) :
 		unset($terms[$featuredKey]);
-		$terms = array_values($terms);	
+		$terms = array_values($terms);
 	endif;
 
 	return $terms;
@@ -134,7 +134,7 @@ function etc_thumbmeta( $post_id ) {
 		$fontoutput = '';
 		$output = '';
 
-		$typologies = etc_cleaned_post_terms( $post_id ); 
+		$typologies = etc_cleaned_post_terms( $post_id );
 		$typologycount = count($typologies);
 		$i = 1;
 		foreach ( $typologies as $typology ) :
@@ -159,5 +159,3 @@ function etc_thumbmeta( $post_id ) {
 		if ( $output != '' ) return $output;
 
 }
-
-?>

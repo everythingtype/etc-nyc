@@ -111,10 +111,10 @@ function etc_gravityforms_enqueue(){
 	$csm_readyclass = get_template_directory_uri() . '/css/gforms-readyclass.css';
 	wp_register_style('csm_readyclass',$csm_readyclass, false, $version);
 	wp_enqueue_style( 'csm_readyclass');
-	
+
 	$csm_formsmain = get_template_directory_uri() . '/css/gforms-formsmain.css';
 	wp_register_style('csm_formsmain',$csm_formsmain, false, $version);
-	wp_enqueue_style( 'csm_formsmain');	
+	wp_enqueue_style( 'csm_formsmain');
 
 	$gformsjs = get_template_directory_uri() . '/js/gforms.js';
 	wp_register_script('gformsjs',$gformsjs, false, $version);
@@ -122,14 +122,3 @@ function etc_gravityforms_enqueue(){
 
 }
 add_action("gform_enqueue_scripts_1", "etc_gravityforms_enqueue", 10, 2);
-
-
-// Override Autocomplete styles
-function etc_autocomplete_enqueue(){
-	
-	wp_dequeue_style( 'SearchAutocomplete-theme' );
-
-}
-add_action('wp_print_styles', 'etc_autocomplete_enqueue');
-
-?>

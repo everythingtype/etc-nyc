@@ -61,7 +61,7 @@ function create_etc_project_dates() {
 	);
 
 	register_taxonomy( 'etc_project_dates', array( 'etc_projects' ), $args );
-	
+
 }
 
 add_action( 'init', 'create_etc_project_dates', 0 );
@@ -93,7 +93,7 @@ function create_etc_project_typologies() {
 	);
 
 	register_taxonomy( 'etc_project_typologies', array( 'etc_projects' ), $args );
-	
+
 }
 
 add_action( 'init', 'create_etc_project_typologies', 0 );
@@ -125,7 +125,7 @@ function create_etc_project_clients() {
 	);
 
 	register_taxonomy( 'etc_project_clients', array( 'etc_projects' ), $args );
-	
+
 }
 
 add_action( 'init', 'create_etc_project_clients', 0 );
@@ -158,9 +158,7 @@ function create_etc_project_fonts() {
 	);
 
 	register_taxonomy( 'etc_project_fonts', array( 'etc_projects' ), $args );
-	
+
 }
 
 add_action( 'init', 'create_etc_project_fonts', 0 );
-
-?>

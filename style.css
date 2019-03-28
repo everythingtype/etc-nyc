@@ -89,7 +89,7 @@ h1 a:hover span span { display: inline; }
 
 	.menutoggle { padding: 22px 20px 0; }
 	.mobilenav .navigation { font-size: 40px; line-height: 1.125; padding: 22px 0 0 20px; }
-	
+
 }
 
 @media screen and (min-width: 850px) {
@@ -154,7 +154,7 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 .project h2 { font-size: 20px; text-align: center; padding-top: 30px; }
 
 .page .column { float: left; padding-top: 25px; }
- 
+
 
 .infoslide { position: relative; top: -28px; }
 .slides h3 { text-align: center; }
@@ -221,20 +221,10 @@ hr { border: 0; height: 1px; background: #000; margin-top: 3em; }
 
 .griditem .ratio { padding-top: 80%; }
 
-/*
-.griditem.large { width: 50%; }
-.griditem.large .ratio { padding-top: 80%; }
-
-.griditem.regular { width: 50%; }
-.griditem.regular .ratio { padding-top: 80%; }
-
-.relatedproject .griditem { width: 50%; }
-.relatedproject .griditem .ratio { padding-top: 80%; }
-*/
 .griditem .gridinner { position: absolute; top: 0; right: 30px; bottom: 42px; left: 0; }
 
 .thumbnail { line-height: 0; padding: 0 0 43px 0; text-align: center; height: 100%; }
-.thumbnailpadding {  position: relative; height: 100%; } 
+.thumbnailpadding {  position: relative; height: 100%; }
 .thumbnailalign { position: absolute; left: 0; right: 0; bottom: 43px;  }
 .gridcaption {border-top: 1px solid #000; background: #fff; padding: 7px 0 0 0; position: absolute; bottom: 0; left: 0; width: 100%; }
 

@@ -21,11 +21,11 @@ function spellerberg_this_sites_sizesets() {
 	// WordPress Default Sizes
 	$sets[] = Array('thumbnail','medium','large','full');
 
-	// Custom sizes as defined via add_image_size, 
+	// Custom sizes as defined via add_image_size,
 	// grouped into sets appropriate for srcset,
 	// ordered from smallest to largest.
 	$sets[] = Array('gridthumb');
-	$sets[] = Array('padmini','phone','phoneplus','padretina');	
+	$sets[] = Array('padmini','phone','phoneplus','padretina');
 
 	return $sets;
 }
@@ -38,5 +38,3 @@ function remove_thumbnail_dimensions( $html ) {
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
 add_filter( 'the_content', 'remove_thumbnail_dimensions', 10 );
 add_filter( 'category_description', 'remove_thumbnail_dimensions', 10 );
-
-?>

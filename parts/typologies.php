@@ -1,19 +1,17 @@
-<?php 
+<?php
 
 $taxonomy = "etc_project_typologies";
 
 $taxargs = array(
-	'orderby'       => 'slug', 
+	'orderby'       => 'slug',
 	'order'         => 'DESC'
 );
 
-$categories = get_terms( $taxonomy, $taxargs ); 
+$categories = get_terms( $taxonomy, $taxargs );
 
 foreach ($categories as $category) :
 
-	$termlink = get_term_link( $category->slug, $taxonomy ); 
-
-//	echo '<h2><a href="' . $termlink . '">' . $category->name . '</a></h2>';
+	$termlink = get_term_link( $category->slug, $taxonomy );
 
 	echo '<div class="grid">';
 
@@ -31,10 +29,10 @@ foreach ($categories as $category) :
 			)
 	);
 
-	$myposts = get_posts( $postargs ); 
+	$myposts = get_posts( $postargs );
 	global $post;
 
-	foreach ( $myposts as $post ) : 
+	foreach ( $myposts as $post ) :
 		setup_postdata($post);
 		get_template_part('parts/project-thumbnail');
 	endforeach;
