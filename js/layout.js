@@ -10,8 +10,6 @@
 
 	jQuery.fn.openLightbox = function() {
 
-		console.log('openLightbox');
-
 		menuopen = true;
 
 		if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -43,7 +41,6 @@
 
 	jQuery.fn.closeLightbox = function() {
 
-		console.log('closeLightbox');
 
 		var menuopen = false;
 

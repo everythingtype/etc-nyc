@@ -3,19 +3,11 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="google-site-verification" content="-1XKYdt9_gUnrr5TaFPPiwVqFI3eoSkxaiAbiqwLiTo" />
-	<title><?php 
-		wp_title( '&mdash;', true, 'right' );
-		bloginfo( 'name' ); 
 
-		if ( $paged >= 2 || $page >= 2 )
-			echo ' &mdash; ' . sprintf( __( 'Page %s' ), max( $paged, $page ) );
-		?></title>
-
-		<?php get_template_part('parts/ascii'); ?>
+			<?php get_template_part('parts/ascii'); ?>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="Designed by Everything Type Company, http://www.etc-nyc.com/ | Developed by Spellerberg Associates, http://www.spellerbergassociates.com/" />
+		<meta name="google-site-verification" content="-1XKYdt9_gUnrr5TaFPPiwVqFI3eoSkxaiAbiqwLiTo" />
 
 		<!-- Fav Icons: Browser, iOS, Windows 8 -->
 		<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri() ?>/images/favicons/favicon.ico">

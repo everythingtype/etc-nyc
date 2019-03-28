@@ -6,6 +6,12 @@ require_once( 'functions/images.php' );
 require_once( 'functions/projects.php' );
 require_once( 'functions/spellerberg_wpsrcset.php' );
 
+function theme_slug_setup() {
+   add_theme_support( 'title-tag' );
+}
+add_action( 'after_setup_theme', 'theme_slug_setup' );
+
+
 function is_page_or_subpage_of($slug) {
 
 	global $post;
